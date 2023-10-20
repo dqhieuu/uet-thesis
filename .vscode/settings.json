@@ -49,5 +49,6 @@
                 "%DOCFILE%"
             ]
         }
-    ]
+    ],
+    "gitdoc.enabled": true
 }
