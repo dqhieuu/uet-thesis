@@ -1,0 +1,51 @@
+\section{Related work}
+\label{sec:related-work}
+
+\subsection{3D face reconstruction}
+
+\subsubsection{Overview}
+% - Need automated solution with high accuracy applicable for incomplete image input (single-view image)
+
+% - There are solutions ranging from manually to fully automated (end-to-end), using machine learning methods.
+
+Creating a 3D model of a human head can be done using various methods, ranging from manual to fully automated. Manual methods involve using 3D modeling software such as Blender, Autodesk Maya, or ZBrush to create a model from scratch, using techniques such as sculpting or modeling with geometric primitives. Less manual methods involve starting with a base head model and making changes to it. 
+
+The concept of 3D Morphable Models (3DMMs) was introduced by Blanz and Vetter \cite{blanzMorphableModelSynthesis1999}, which represented the shape and texture variations of faces using linear statistical models, specifically Principal Component Analysis (PCA). This method allows for the formalization of the diversity of human faces using a small number of parameters. Various works \cite{paysan3DFaceModel2009,gerigMorphableFaceModels2018,caoFaceWarehouse3DFacial2014,liLearningModelFacial2017,yangFaceScapeLargeScaleHigh2020} have been dedicated to creating a generalized 3DMM.
+
+ To better express facial details, recent works have introduced non-linearity by integrating neural networks into 3DMMs such as VAE \cite{ranjanGenerating3DFaces2018}, GAN \cite{gecerFastGANFITGenerativeAdversarial2022}, or NeRF \cite{galanakis3DMMRFConvolutionalRadiance2023,hongHeadNeRFRealTimeNeRFBased2022}.
+
+\subsubsection{FLAME}
+
+As the high-end methods for generating 3D faces require extensive labor and the low-end methods lack facial expressiveness, FLAME \cite{liLearningModelFacial2017} aims to be a middle ground for 3D face modeling. FLAME is a 3DMM model that can reproduce realistic and expressive 3D face models that accurately capture the variations in facial shape and expression. FLAME separates the representation of identity, pose, and facial expression into different parameter spaces and combines them with linear blend skinning (LBS) and blendshapes. Its ability to reproduce 3D face models with high expressiveness has made it the foundation for many state-of-the-art face reconstruction models.
+
+\includefigure[Different types of FLAME parameters for controlling the 3D shape]{images/flame_parameter_change.png}
+
+\subsubsection{DECA}
+
+DECA is a method to reconstruct 3D face models from a single-view image, using FLAME as a component in the process of reconstructing the 3D model. In addition to detecting the facial shape and expression, DECA can map the facial texture from the image to the 3D model using a 3D texture space.
+
+\includefigure[DECA architecture, using FLAME as part of the pipeline]{images/deca_architecture.png}
+
+\subsubsection{3D hair reconstruction}
+% - For higher accuracy and easy of modification, should not be part of the face model.
+
+% - Extract from the captured single-view image.
+
+% - Aligned automatically with the face model.
+
+Representing hair structure in a three-dimensional environment is a complex task \cite{hairsurvey}. Several studies, such as \cite{retinaface,facegcn,pifu,3dhmr} represent hair as a mesh. While this representation serves specific purposes, it still poses various limitations such as refinement, animation, rendering, and so on.
+Other techniques have been developed for higher-quality 3D hair modeling \cite{hairsurvey}. These include clustering hair into fiber groups and representing it as cylinders \cite{cluster} or modeling each hair strand individually \cite{hairsurvey}. Modeling each hair strand fulfills requirements for practical applications.
+The latest research focused on hair modeling from images \cite{imgbasesurvey}. This includes techniques for creating a 3D hair model from multiple images \cite{multihair1}, as well as from a single image \cite{hairimg1,hairimg2,hairimg4}.
+
+
+\subsubsubsection{Hairnet}
+
+Hairnet \cite{zhouHairNetSingleViewHair2018} was the pioneering deep learning-based model for reconstructing 3D hair from a single image. Hairnet employed data augmentation techniques to create a large dataset comprising $40,000$ hairstyles. Its model architecture followed an encode-decode model, where the input was encoded into a feature vector and then decoded back into a 3D hair model. Hairnet's innovative use of synthetic data for training purposes has been adopted by subsequent models. Hairnet applied a 2D capture for each synthetic hairstyle and transformed it into an intermediate format called an oriented map. The oriented map provides directional information for the model.
+
+\subsection{Emotion customization}
+
+\subsubsection{Overview}
+
+Using FLAME, the input parameters are grouped into shape parameters, expression parameters and pose parameters. To change the facial expression, one would apply changes to FLAME expression parameters and pose parameters. However, these expression parameters are non-descriptive and are too many which can make the system users confused. Therefore, more simple and descriptive parameters are needed for representing basic human emotions. 
+
+Based on the common needs for customizing facial emotion, I decided that a set of 6 basic emotions, which are ``happiness'', ``anger'', ``sadness'', ``fear'', ``contempt'', ``surprise'' is implemented as parameters in the system. These emotions are defined in the Arousal-Valence Model and are common for usage. The parameters responsible for dictating the facial expression in FLAME are expression parameters and pose parameters. In order to map these emotions to FLAME parameters, given that FLAME parameters mostly use linear morphing, one idea is to use a basic multi-layer perceptron architecture. The networking implement this should take the intensity of these emotions and return the corresponding FLAME parameters which are used for emotions.

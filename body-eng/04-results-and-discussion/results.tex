@@ -1,0 +1,45 @@
+\section{Results and discussion}
+\label{sec:results}
+
+\subsection{Data Description}
+To train the hair reconstruction model, we used the public HairNet dataset \cite{zhouHairNetSingleViewHair2018}. Using our generation method, we were able to create a dataset of roughly 30,000 images for training the hair reconstruction model from the database of 343 hair models.
+For face head reconstruction, we used a combination of pre-trained DECA \cite{fengLearningAnimatableDetailed2021} and pre-trained MICA \cite{zielonkaMetricalReconstructionHuman2022}  models.
+To evaluate the system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system.
+
+\subsection{Experimental Scenarios}
+
+\subsection{Evaluation Methods}
+To evaluate the quality of our proposal, we have designed a qualitative survey using a Likert scale with a 5-point rating system (1-5). The survey question asks respondents to rate the degree of similarity between the original input and the avatar output. This question serves as a key metric for assessing the effectiveness of our proposal.
+Using this question, we aimed to assess how closely the avatar output resembles the original input from the perspective of the survey participants. 
+\subsubsection{Measurements}
+\subsubsubsection{DIFD}
+The DIFD (Difference in Facial Descriptors) evaluation method determines whether two portrait images belong to the same person by comparing the difference between their embedding vectors using the Facenet model. Similar to FaceNet, we determine that two portrait images belong to the same person if their DIFD score is less than 1.5.
+% PSNR, SSIM, LPIPS, (DFID)
+% Avg result
+% 
+
+\subsubsubsection{PSNR, SSIM, LPIPS}
+PSNR and SSIM are widely used non-deep learning methods that measure similarity based on specific image attributes and provide information about the similarity in terms of noise and structure.
+LPIPS is a deep learning-based metric that employs a neural network to learn image features and compute the similarity between two images based on these features.
+
+\subsection{Experimental Results and Commentary}
+\subsubsection{Quantitative results}
+Table \ref{loss_stats} illustrates the results of the aforementioned measurements when comparing our method with several other 3D face reconstruction methods. The results show that, in terms of comparison, our results are not as good as many other methods such as i3DMM and MoFaNeRF because they applied the measurements to hairless faces. However, we also see that all of the measurement results meet the requirements. In particular, the average value of DIFD is 0.25, which indicates that the synthesized output image has been evaluated as retaining the represented features of the same person as the input image.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Comparison of our proposal and others}
+    \begin{tabularx}{\linewidth}{| X | X | X | X | X |}
+    \hline
+               & \textbf{PSNR} & \textbf{SSIM} & \textbf{LPIPS} & \textbf{DIFD} \\ \hline\hline
+    \textbf{Our system} &  23.15  &   0.835   &   0.09    &   0.25   \\ \hline %0.2521 
+    \textbf{i3DMM}   &   24.45   &   0.904   &    0.11   &    NA  \\ \hline
+    \textbf{MoFaNeRF}   &   31.49   &  0.951    &   0.06    &   NA   \\ \hline
+    \end{tabularx}
+    \label{loss_stats}
+\end{table}
+
+\subsubsection{Qualitative results}
+Out of the 33 respondents, the survey showed that an impressive 93.8\% of the respondents were able to correctly identify that the input image and the synthesized face image belonged to the same  ($score >= 3$). Of those, 14\% were evaluated as being very similar with scores of 5, and 49.3\% were evaluated with scores of 4. %Likert scale provides a way for participants to express their opinions on a spectrum of agreement, allowing us to gather more nuanced feedback on the quality and realism of our avatar reconstruction system. 
+
+\includesmallfigure[The survey result.]{images/head_similarity.png}

@@ -1,0 +1,20 @@
+\documentclass[12pt]{article}
+
+\input{config}
+
+\begin{document}
+\include{vars.tex}
+
+% FRONT TEXT
+\pagenumbering{gobble}
+\subfile{front/front.tex}
+
+% BODY TEXT
+\pagenumbering{arabic}
+\subfile{body-eng/body.tex}
+
+% END TEXT
+\subfile{end/end.tex}
+
+
+\end{document}

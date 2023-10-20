@@ -1,0 +1,53 @@
+{
+    "latex-workshop.latex.recipes": [
+        // {
+        //     "name": "lualatex -> biber -> lualatex",
+        //     "tools": [
+        //         "lualatex",
+        //         "biber",
+        //         "lualatex"
+        //     ]
+        // },
+        {
+            "name": "latexmk",
+            "tools": [
+                "lualatexmk",
+            ]
+        },
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-pdflatex=lualatex",
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                // "-outdir=./out",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                // "-output-directory=./out",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ]
+}
