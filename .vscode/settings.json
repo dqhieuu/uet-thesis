@@ -1,17 +1,17 @@
 {
     "latex-workshop.latex.recipes": [
-        // {
-        //     "name": "lualatex -> biber -> lualatex",
-        //     "tools": [
-        //         "lualatex",
-        //         "biber",
-        //         "lualatex"
-        //     ]
-        // },
         {
             "name": "latexmk",
             "tools": [
                 "lualatexmk",
+            ]
+        },
+        {
+            "name": "lualatex -> biber -> lualatex",
+            "tools": [
+                "lualatex",
+                "biber",
+                "lualatex"
             ]
         },
     ],
@@ -50,5 +50,16 @@
             ]
         }
     ],
-    "gitdoc.enabled": true
+    "gitdoc.enabled": true,
+    "grammarly.files.include": [
+        "**/*.md",
+        "**/*.tex",
+        "**/*.txt"
+    ],
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 10000,
 }

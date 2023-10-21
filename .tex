@@ -1,36 +1,26 @@
-\section{The method}
-\label{sec:method}
 
-\subsection{Requirements analysis}
-\subsubsection{Overview}
-This thesis aims to create a system that can reconstruct a 3D avatar from a single-view portrait image. The system should be able to handle a variety of tasks related to 3D avatar creation, including:
-\begin{itemize}
-    \item Creating a 3D avatar from a single-view portrait image
+\SaveVerb{test}|verb content|
+\UseVerb{test}
 
-    \item Customizing the 3D avatar's facial expression
+% \begin{figure}[ht]
+%     \begin{plantuml}
+%         @startuml
+%         left to right direction
+%         actor User
+%         rectangle "3D avatar reconstruction system" {
+%         usecase "Create 3D avatar from a portrait image" as UC1
+%         usecase "Customize avatar's expression" as UC2
+%         usecase "Try on different hairstyles" as UC3
+%         }
+%         User --> UC1
+%         User --> UC2
+%         User --> UC3
+%         @enduml
+%     \end{plantuml}
+%     \caption{Test}
+%     % \label{#2}
+% \end{figure}
 
-    \item Trying on different hairstyles on the 3D avatar
-\end{itemize}
-
-From the requirements above, an analysis of the system's requirements can be done to determine the system's architecture and the methods used to create the system. This section will explain the requirements analysis and the system's architecture, using UML diagrams.
-
-\subsubsection{Use cases}
-The use cases of the system are shown in the figure below.
-
-
-
-\begin{umlfigure}[Use cases of the system][fig:use_cases]
-    left to right direction
-    actor User
-    rectangle "3D avatar reconstruction system" {
-    usecase "Creating 3D avatar from a portrait image" as UC1
-    usecase "Customize avatar's expression" as UC2
-    usecase "Try on different hairstyles" as UC3
-    }
-    User --> UC1
-    User --> UC2
-    User --> UC3
-\end{umlfigure}
 
 
 \subsection{System overview}
@@ -52,11 +42,11 @@ The system additionally holds a database for hairstyles, which is very convenien
 \begin{itemize}
     \item The system takes an image input with an API endpoint
     \item The image-to-head encoder outputs the FLAME's shape, pose, and expression parameters, and the extracted face texture.
-    \item Optionally, the system can take human-friendly emotion parameters to output FLAME's pose and expression parameters, using a simple emotion-to-FLAME regressive model.
-    \item The FLAME-to-output decoder takes FLAME's shape, pose, and expression parameters, texture coordinate, and extracted image texture to output a 3D model with a texture map and a normal map.
+    \item Optionally, the system can take human-friendly emotion parameters to outputs FLAME's pose and expression parameters, using a simple emotion-to-FLAME regressive model.
+    \item The FLAME-to-output decoder takes FLAME's shape, pose, and expression parameters, texture coordinate and extracted image texture to output a 3D model with a texture map and a normal map.
     \item While the head is being processed, the image-to-hair model outputs the reconstructed strand-based 3D hair model.
     \item Optionally, a 3D hair model can be chosen from the database instead of using the image-to-hair model for the try-on purpose.
-    \item After the head model and the hair model are generated, they are combined with an alignment procedure to create an accurate 3D avatar zip file.
+    \item After the head model and the hair model are generated, they are combined with an alignment procedure to created an accurate 3D avatar zip file.
     \item Finally, the zip file is sent to the user, where the 3D renderer on the user's web browser will be used to render the 3D avatar.
 \end{itemize}
 
