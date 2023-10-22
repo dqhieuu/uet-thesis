@@ -12,28 +12,40 @@ This thesis aims to create a system that can reconstruct a 3D avatar from a sing
     \item Trying on different hairstyles on the 3D avatar
 \end{itemize}
 
-From the requirements above, an analysis of the system's requirements can be done to determine the system's architecture and the methods used to create the system. This section will explain the requirements analysis and the system's architecture, using UML diagrams.
+From the requirements above, an analysis of the system's requirements is conducted to determine the system's architecture and the methods used to create the system. This section clarifies the requirements analysis and the system's architecture, using UML diagrams.
 
 \subsubsection{Use cases}
-The use cases of the system are shown in the figure below.
-
-
+The use cases of the system are shown in the figure below:
+\clearpage
 
 \begin{umlfigure}[Use cases of the system][fig:use_cases]
+    @startuml
     left to right direction
     actor User
     rectangle "3D avatar reconstruction system" {
-    usecase "Creating 3D avatar from a portrait image" as UC1
-    usecase "Customize avatar's expression" as UC2
-    usecase "Try on different hairstyles" as UC3
+    usecase "Create 3D avatar from a portrait image" as UC1
+    usecase "Create 3D avatar with customized emotion" as UC2
+    usecase "Try on different hairstyles with 3D avatar" as UC3
     }
     User --> UC1
     User --> UC2
     User --> UC3
+    @enduml
 \end{umlfigure}
 
+\subsubsubsection{Create 3D avatar from a portrait image}
+This use case is the main use case of the system. The user can upload a single-view portrait image to the system, and the system will output a 3D avatar reconstructed from the input image. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar's 3D model and texture map.
 
-\subsection{System overview}
+\subsubsubsection{Create 3D avatar with customized emotion}
+
+This use case is an extension of the main use case. The user can choose to customize the 3D avatar's emotion by selecting the emotion from a list of emotions. The system will then output a 3D avatar with the selected emotion. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar's 3D model and texture map.
+
+\subsubsubsection{Try on different hairstyles with 3D avatar}
+
+This use case is an extension of the main use case. The user can choose to try on different hairstyles with the 3D avatar. The system will then output a 3D avatar with the selected hairstyle. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar's 3D model and texture map.
+
+
+\subsection{System architecture overview}
 
 \subsubsection{Overall architecture}
 
@@ -43,7 +55,7 @@ Essentially, the system architecture serves the purpose of taking a single-view 
 
 The current state of the system allows the user to opt for applying the emotion not captured from the picture. This means the 3D avatar can show a wide range of emotional expressions without having to capture each portrait representing a different emotion.
 
-The system additionally holds a database for hairstyles, which is very convenient for try-on purposes. Instead of going through the standard flow where the system extracts the user's hairstyle from the captured image, the user can try on a variety of hairstyles in the database to see if any of these hairstyles suit their face. The details of each reconstruction block will be explained in detail in the sections below.
+The system additionally holds a database for hairstyles, which is convenient for try-on purposes. Instead of going through the standard flow where the system extracts the user's hairstyle from the captured image, the user can try on a variety of hairstyles in the database to see if any of these hairstyles suit their face. The details of each reconstruction block will be explained in detail in the sections below.
 
 \includefigure[The pipeline of the proposed system]{images/system_pipeline.png}
 

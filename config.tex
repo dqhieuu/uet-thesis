@@ -43,7 +43,6 @@
 \usetikzlibrary{calc}
 \usepackage{eso-pic}
 
-\usepackage{plantuml}
 
 % Wikipedia-style "citation needed" macro
 \newcommand{\citationneeded}[1][]{\textsuperscript{\color{blue} [citation needed: #1]}}
@@ -178,18 +177,25 @@
 
 \usepackage{fancyvrb}
 \usepackage{catchfile}
+\usepackage{plantuml}
+\usepackage{xstring}
 
 \NewDocumentEnvironment{umlfigure}{O{} O{}}{%
     \VerbatimOut{\PlantUMLJobname-plantuml.txt}}
 {%
     \endVerbatimOut
+
     \makeatletter
-    \CatchFileDef{\UMLCONTENT}{\PlantUMLJobname-plantuml.txt}{\let\do\@makeother\dospecials\obeylines}
+    \CatchFileDef{\UMLCONTENT}{\PlantUMLJobname-plantuml.txt}{\obeylines}
     \makeatother
-    \newwrite\myoutput
-    \immediate\openout\myoutput=\PlantUMLJobname-plantuml.txt
-    \immediate\write\myoutput{@startuml^^J\UMLCONTENT^^J@enduml}
-    \immediate\closeout\myoutput
+    \IfBeginWith{\UMLCONTENT}{@startuml}{
+    }{
+        \newwrite\myoutput
+        \immediate\openout\myoutput=\PlantUMLJobname-plantuml.txt
+        \immediate\write\myoutput{@startuml^^J\UMLCONTENT^^J@enduml}
+        \immediate\closeout\myoutput
+    }
+
     \ifluatex
         \directlua{
             local jobname=\luastring{\PlantUMLJobname}

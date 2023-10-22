@@ -51,6 +51,7 @@
         }
     ],
     "gitdoc.enabled": true,
+    "gitdoc.commitValidationLevel": "none",
     "grammarly.files.include": [
         "**/*.md",
         "**/*.tex",
