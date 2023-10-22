@@ -134,7 +134,6 @@
         \includegraphics[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#2}
         \IfValueT{#1}{\caption{#1}}
         \label{fig:#2}
-        \vspace{1cm}
     \end{figure}
 }
 
@@ -146,24 +145,19 @@
         \captionsetup{font=bf}
         \includegraphics[width=0.6\textwidth,height=0.6\textheight,keepaspectratio]{#2}
         \IfValueT{#1}{\caption{#1}}
-        \IfValueT{#2}{\label{fig:#2}}
-        \vspace{1cm}
+        \label{fig:#2}
     \end{figure}
 }
 
-\NewDocumentCommand{\includesvgfigure}{O{} O{}}{
+\NewDocumentCommand{\includesvgfigure}{O{} m}{
     \begin{figure}[H]
         \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
         \centering
         \vspace{1cm}
-        \ifstrempty{#1}{
-            \includesvg[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#2}
-        }{
-            \includesvg[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#2}
-            \captionsetup{font=bf}
-            \caption{#1}
-            \label{fig:#2}
-        }
+        \includesvg[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#2}
+        \captionsetup{font=bf}
+        \IfValueT{#1}{\caption{#1}}
+        \label{fig:#2}
     \end{figure}
 }
 
