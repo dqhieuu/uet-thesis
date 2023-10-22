@@ -42,18 +42,9 @@ This use case is the main use case of the system. The system should provide a GU
     actor User
     participant "3D Avatar Reconstruction System" as System
     User -> System: Upload image
-    System -> System: Extract face region
-    System -> System: Extract face texture
-    System -> System: Extract hair region
-    System -> System: Extract hair texture
-    System -> System: Extract emotion
-    System -> System: Reconstruct 3D head
-    System -> System: Reconstruct 3D hair
-    System -> System: Align head and hair
-    System -> System: Output 3D avatar
+    System -> System: Process image to create 3D avatar
     System -> User: Download 3D avatar
     @enduml
-
 \end{umlfigure}
 
 
