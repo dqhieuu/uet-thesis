@@ -71,7 +71,7 @@ This use case is an extension of the main use case. The user can choose to custo
 
 \subsubsubsection{Try on different hairstyles with 3D avatar}
 
-This use case is an extension of the main use case. The user can choose to try on different hairstyles with the 3D avatar. The system will then output a 3D avatar with the selected hairstyle. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model and texture map. The sequence diagram of this use case is shown in the figure below.
+This use case is an extension of the main use case. The user can choose to try on different hairstyles with the 3D avatar. The system will then output a 3D avatar with the selected hairstyle. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model, the texture map, and the hairstyle model. The sequence diagram of this use case is shown in the figure below.
 
 \begin{umlfigure}[Analysis: Sequence diagram: Try on different hairstyles with 3D avatar][seq_try_on_hairstyle]
     @startuml
@@ -99,7 +99,6 @@ Essentially, the system architecture serves the purpose of taking a single-view 
 The system holds a database for hairstyles, which is convenient for try-on purposes. Instead of going through the standard flow where the system extracts the user's hairstyle from the captured image, the user can try on a variety of hairstyles in the database to see if any of these hairstyles suit their face. The details of each reconstruction block will be explained in detail in the sections below.
 
 \includefigure[The pipeline of the proposed system]{images/system_pipeline.png}
-
 
 
 
