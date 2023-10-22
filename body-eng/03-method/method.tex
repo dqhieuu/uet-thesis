@@ -103,11 +103,11 @@ The details of each reconstruction block will be explained in detail in the sect
 \subsubsection{Flow: Create 3D avatar from a portrait image}
 For taking a single-view portrait image as input, the system provides a front-end interface, i.e. a web page, where the user can upload their image. The front-end interface allows the user to send the image to a gateway server, which is responsible for handling the user's requests and sending the image to the back-end server for processing. By using a gateway server, the system architecture can be modularized, which means multiple reconstruction backends can be used as substitutions. A gateway also allows the system to easily scale up to handle a large number of requests by adding more back-end servers.
 
-The back-end server is responsible for reconstruction tasks and algorithmic tasks.
+The back-end server is responsible for reconstruction tasks and algorithmic tasks. To be able to create a 3D avatar from a single-view portrait image, the system needs to be able to reconstruct the 3D head model from the input image. The system uses a pre-trained DECA model and can be substituted by a pre-trained MICA model \cite{fengLearningAnimatableDetailed2021} to reconstruct the 3D head model.
 
 The implemented flow for creating a 3D avatar from a single-view portrait image is shown in the figure below.
 
-\begin{umlfigure}[Implementation: Sequence diagram: Create 3D avatar from a portrait image.]
+\begin{umlfigure}[Implementation: Sequence diagram: Create 3D avatar from a portrait image.][seq_create_3d_avatar_implementation]
     @startuml
     actor User
     participant "Front-end interface" as Frontend
@@ -130,10 +130,6 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
     Frontend -> User: Downloads 3D avatar zip file
     @enduml
 \end{umlfigure}
-
-
-
-To be able to create a 3D avatar from a single-view portrait image, the system needs to be able to reconstruct the 3D head model from the input image. The system uses a pre-trained DECA model \cite{fengLearningAnimatableDetailed2021} to reconstruct the 3D head model. The DECA model takes an image as input and outputs the FLAME \cite{liLearningLightweightMesh2020} model's shape, pose, and expression parameters, along with the extracted face texture. The system then uses the FLAME model's parameters and the extracted face texture to reconstruct the 3D head model. The reconstructed 3D head model is then combined with the reconstructed 3D hair model to create a 3D avatar. The 3D avatar is then sent to the user, where the user can view the 3D avatar using a 3D renderer on the user's web browser.
 
 
 \subsubsection{Flow: Create 3D avatar with customized emotions}
