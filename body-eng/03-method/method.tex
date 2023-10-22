@@ -40,10 +40,11 @@ This use case is the main use case of the system. The system should provide a GU
     @startuml
     actor User
     participant "3D Avatar Reconstruction System" as System
-    User -> System: Upload image
-    System -> System: Process image to create 3D avatar
-    User -> User: View 3D avatar
-    User -> System: Download 3D avatar
+    User -> System: Uploads image
+    System -> System: Processes image
+    System -> User: Outputs 3D avatar
+    User -> User: Views 3D avatar
+    User -> System: Downloads 3D avatar
     @enduml
 \end{umlfigure}
 
@@ -56,10 +57,12 @@ This use case is an extension of the main use case. The user can choose to custo
     @startuml
     actor User
     participant "3D Avatar Reconstruction System" as System
-    User -> System: Upload image
-    System -> System: Process image to create 3D avatar
+    User -> System: Uploads image
+    System -> System: Processes image
+    System -> User: Outputs 3D avatar
     User -> System: Adjust emotion
     System -> System: Apply emotion parameters to 3D avatar
+    System -> User: Outputs emotion-applied 3D avatar
     User -> User: View 3D avatar
     User -> System: Download 3D avatar
     @enduml
@@ -71,16 +74,19 @@ This use case is an extension of the main use case. The user can choose to custo
 This use case is an extension of the main use case. The user can choose to try on different hairstyles with the 3D avatar. The system will then output a 3D avatar with the selected hairstyle. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model and texture map.
 
 \begin{umlfigure}[Analysis: Sequence diagram: Try on different hairstyles with 3D avatar][seq_try_on_hairstyle]
-@startuml
-actor User
-participant "3D Avatar Reconstruction System" as System
-User -> System: Upload image
-System -> System: Process image to create 3D avatar
-User -> System: Select hairstyle
-System -> System: Apply hairstyle to 3D avatar
-User -> User: View 3D avatar
-User -> System: Download 3D avatar
-@enduml
+    @startuml
+    actor User
+    participant "3D Avatar Reconstruction System" as System
+    User -> System: Uploads image
+    System -> System: Processes image
+    System -> User: Outputs 3D avatar
+    User -> System: Select hairstyle
+    System -> System: Apply hairstyle to 3D avatar
+    System -> User: Outputs 3D avatar with hairstyle
+    User -> User: View 3D avatar
+    User -> System: Download 3D avatar
+    @enduml
+\end{umlfigure}
 
 \subsection{System architecture overview}
 
