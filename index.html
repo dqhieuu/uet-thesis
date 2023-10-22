@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Thesis</title>
-    <script src="
-    https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js
-    "></script>
-    <link
-      href="
-    https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/web/pdf_viewer.min.css
-    "
-      rel="stylesheet"
-    />
   </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      embed {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+    <embed src="main.pdf" type="application/pdf" />
+  </body>
 </html>
