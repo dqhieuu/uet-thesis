@@ -142,16 +142,15 @@
     \end{figure}
 }
 
-\NewDocumentCommand{\includesmallfigure}{O{} O{}}{
+\NewDocumentCommand{\includesmallfigure}{O{} m}{
     \begin{figure}[H]
         \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
         \centering
         \vspace{1cm}
         \captionsetup{font=bf}
         \includegraphics[width=0.6\textwidth,height=0.6\textheight,keepaspectratio]{#2}
-
-        \IfValueT{#1}{        \caption{#1}}
-        \label{fig:#2}
+        \IfValueT{#1}{\caption{#1}}
+        \IfValueT{#2}{\label{fig:#2}}
         \vspace{1cm}
     \end{figure}
 }
