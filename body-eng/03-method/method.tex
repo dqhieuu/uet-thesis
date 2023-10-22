@@ -34,7 +34,28 @@ The use cases of the system are shown in the figure below:
 \end{umlfigure}
 
 \subsubsubsection{Create 3D avatar from a portrait image}
-This use case is the main use case of the system. The system should provide a GUI (graphical user interface) to allow the user to upload their images easily. The user uploads a single-view portrait image to the system, and the system will process the image and output a 3D avatar in the form of a 3D mesh reconstructed from the input image. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model and texture map.
+This use case is the main use case of the system. The system should provide a GUI (graphical user interface) to allow the user to upload their images easily. The user uploads a single-view portrait image to the system, and the system will process the image and output a 3D avatar in the form of a 3D mesh reconstructed from the input image. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model and texture map. The sequence diagram of this use case is shown in the figure below.
+
+%sequence diagram
+\begin{umlfigure}[Sequence diagram: Create 3D avatar from a portrait image][seq_create_3d_avatar]
+    @startuml
+    actor User
+    participant "3D Avatar Reconstruction System" as System
+    User -> System: Upload image
+    System -> System: Extract face region
+    System -> System: Extract face texture
+    System -> System: Extract hair region
+    System -> System: Extract hair texture
+    System -> System: Extract emotion
+    System -> System: Reconstruct 3D head
+    System -> System: Reconstruct 3D hair
+    System -> System: Align head and hair
+    System -> System: Output 3D avatar
+    System -> User: Download 3D avatar
+    @enduml
+
+\end{umlfigure}
+
 
 \subsubsubsection{Create 3D avatar with customized emotions}
 
