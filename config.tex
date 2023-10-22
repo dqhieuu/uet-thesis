@@ -126,7 +126,7 @@
 
 
 \newcommand{\includefigure}[2][]{
-    \begin{figure}[ht]
+    \begin{figure}[H]
         \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
         \centering
         \vspace{1cm}
@@ -142,25 +142,22 @@
     \end{figure}
 }
 
-\newcommand{\includesmallfigure}[2][]{
-    \begin{figure}[ht]
+\NewDocumentCommand{\includesmallfigure}{O{} O{}}{
+    \begin{figure}[H]
         \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
         \centering
         \vspace{1cm}
-        \ifstrempty{#1}{
-            \includegraphics[width=0.6\textwidth,height=0.6\textheight,keepaspectratio]{#2}
-        }{
-            \captionsetup{font=bf}
-            \includegraphics[width=0.6\textwidth,height=0.6\textheight,keepaspectratio]{#2}
-            \caption{#1}
-            \label{fig:#2}
-        }
+        \captionsetup{font=bf}
+        \includegraphics[width=0.6\textwidth,height=0.6\textheight,keepaspectratio]{#2}
+
+        \IfValueT{#1}{        \caption{#1}}
+        \label{fig:#2}
         \vspace{1cm}
     \end{figure}
 }
 
-\newcommand{\includesvgfigure}[2][]{
-    \begin{figure}[ht]
+\NewDocumentCommand{\includesvgfigure}{O{} O{}}{
+    \begin{figure}[H]
         \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
         \centering
         \vspace{1cm}
