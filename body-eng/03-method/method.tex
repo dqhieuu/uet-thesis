@@ -103,7 +103,7 @@ The details of each reconstruction block will be explained in detail in the sect
 \subsubsection{Flow: Create 3D avatar from a portrait image}
 For taking a single-view portrait image as input, the system provides a front-end interface, i.e. a web page, where the user can upload their image. The front-end interface allows the user to send the image to a gateway server, which is responsible for handling the user's requests and sending the image to the back-end server for processing. By using a gateway server, the system architecture can be modularized, which means multiple reconstruction backends can be used as substitutions. A gateway also allows the system to easily scale up to handle a large number of requests by adding more back-end servers.
 
-The back-end server is responsible for processing the image and sending the 3D avatar to the user. 
+The back-end server is responsible for reconstruction tasks and algorithmic tasks.
 
 The implemented flow for creating a 3D avatar from a single-view portrait image is shown in the figure below.
 
