@@ -59,6 +59,7 @@
     ],
     "editor.wordWrap": "on",
     "editor.formatOnSave": true,
+    "explorer.excludeGitIgnore": true,
     "latex-workshop.latex.autoClean.run": "onBuilt",
     "latex-workshop.latex.autoBuild.run": "onSave",
     "files.autoSave": "afterDelay",
