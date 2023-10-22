@@ -10,7 +10,7 @@ To evaluate the system, we used face images generated from a StyleGAN \cite{karr
 
 \subsection{Evaluation Methods}
 To evaluate the quality of our proposal, we have designed a qualitative survey using a Likert scale with a 5-point rating system (1-5). The survey question asks respondents to rate the degree of similarity between the original input and the avatar output. This question serves as a key metric for assessing the effectiveness of our proposal.
-Using this question, we aimed to assess how closely the avatar output resembles the original input from the perspective of the survey participants. 
+Using this question, we aimed to assess how closely the avatar output resembles the original input from the perspective of the survey participants.
 \subsubsection{Measurements}
 \subsubsubsection{DIFD}
 The DIFD (Difference in Facial Descriptors) evaluation method determines whether two portrait images belong to the same person by comparing the difference between their embedding vectors using the Facenet model. Similar to FaceNet, we determine that two portrait images belong to the same person if their DIFD score is less than 1.5.
@@ -30,11 +30,11 @@ Table \ref{loss_stats} illustrates the results of the aforementioned measurement
     \centering
     \caption{Comparison of our proposal and others}
     \begin{tabularx}{\linewidth}{| X | X | X | X | X |}
-    \hline
-               & \textbf{PSNR} & \textbf{SSIM} & \textbf{LPIPS} & \textbf{DIFD} \\ \hline\hline
-    \textbf{Our system} &  23.15  &   0.835   &   0.09    &   0.25   \\ \hline %0.2521 
-    \textbf{i3DMM}   &   24.45   &   0.904   &    0.11   &    NA  \\ \hline
-    \textbf{MoFaNeRF}   &   31.49   &  0.951    &   0.06    &   NA   \\ \hline
+        \hline
+                            & \textbf{PSNR} & \textbf{SSIM} & \textbf{LPIPS} & \textbf{DIFD} \\ \hline\hline
+        \textbf{Our system} & 23.15         & 0.835         & 0.09           & 0.25          \\ \hline %0.2521 
+        \textbf{i3DMM}      & 24.45         & 0.904         & 0.11           & NA            \\ \hline
+        \textbf{MoFaNeRF}   & 31.49         & 0.951         & 0.06           & NA            \\ \hline
     \end{tabularx}
     \label{loss_stats}
 \end{table}

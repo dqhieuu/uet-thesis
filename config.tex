@@ -125,19 +125,15 @@
 }
 
 
-\newcommand{\includefigure}[2][]{
+\NewDocumentCommand{\includefigure}{O{} m}{
     \begin{figure}[H]
         \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
         \centering
         \vspace{1cm}
-        \ifstrempty{#1}{
-            \includegraphics[width=0.9\textwidth,height=\textheight,keepaspectratio]{#2}
-        }{
-            \captionsetup{font=bf}
-            \includegraphics[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#2}
-            \caption{#1}
-            \label{fig:#2}
-        }
+        \captionsetup{font=bf}
+        \includegraphics[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#2}
+        \IfValueT{#1}{\caption{#1}}
+        \label{fig:#2}
         \vspace{1cm}
     \end{figure}
 }
