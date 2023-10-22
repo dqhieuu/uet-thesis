@@ -101,6 +101,7 @@ The system holds a database for hairstyles, which is convenient for try-on purpo
 The details of each reconstruction block will be explained in detail in the sections below, where the red blocks are the blocks that are novel and implemented in this thesis.
 
 \subsubsection{Flow: Create 3D avatar from a portrait image}
+For taking a single-view portrait image as input, the system provides a front-end interface, i.e. a web page, where the user can upload their image. The system then takes the image and sends it to the back-end server, where the image is processed.
 
 To be able to create a 3D avatar from a single-view portrait image, the system needs to be able to reconstruct the 3D head model from the input image. The system uses a pre-trained DECA model \cite{fengLearningAnimatableDetailed2021} to reconstruct the 3D head model. The DECA model takes an image as input and outputs the FLAME \cite{liLearningLightweightMesh2020} model's shape, pose, and expression parameters, along with the extracted face texture. The system then uses the FLAME model's parameters and the extracted face texture to reconstruct the 3D head model. The reconstructed 3D head model is then combined with the reconstructed 3D hair model to create a 3D avatar. The 3D avatar is then sent to the user, where the user can view the 3D avatar using a 3D renderer on the user's web browser.
 
