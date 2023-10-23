@@ -110,10 +110,10 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
 \begin{umlfigure}[Implementation: Sequence diagram: Create 3D avatar from a portrait image.][seq_create_3d_avatar_implementation]
     @startuml
     actor User
-    participant "Front-end interface" as Frontend
-    participant "Gateway server" as Gateway
-    participant "DECA server" as DECA
-    participant "MICA server" as MICA
+    boundary "Front-end interface" as Frontend
+    control "Gateway server" as Gateway
+    control "DECA server" as DECA
+    control "MICA server" as MICA
 
 
     alt use DECA to reconstruct face
