@@ -112,22 +112,16 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
     actor User
     participant "Front-end interface" as Frontend
     participant "Gateway server" as Gateway
-    participant "Back-end server" as Backend
+    participant "DECA"
     User -> Frontend: Uploads image
     Frontend -> Gateway: Sends image
-    Gateway -> Backend: Sends image
-    Backend -> Backend: Processes image
-    Backend -> Gateway: Sends 3D avatar
+    Gateway -> DECA: Sends image
+    DECA -> DECA: Processes image
+    DECA -> Gateway: Sends 3D avatar
     Gateway -> Frontend: Sends 3D avatar
     Frontend -> User: Outputs 3D avatar
     User -> User: Views 3D avatar
     User -> Frontend: Downloads 3D avatar
-    Frontend -> Gateway: Sends download request
-    Gateway -> Backend: Sends download request
-    Backend -> Backend: Sends 3D avatar zip file
-    Backend -> Gateway: Sends 3D avatar zip file
-    Gateway -> Frontend: Sends 3D avatar zip file
-    Frontend -> User: Downloads 3D avatar zip file
     @enduml
 \end{umlfigure}
 
