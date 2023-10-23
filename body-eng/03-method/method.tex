@@ -112,7 +112,8 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
     actor User
     participant "Front-end interface" as Frontend
     participant "Gateway server" as Gateway
-    participant "DECA"
+    participant "DECA server" as DECA
+    participant "MICA server" as MICA
     User -> Frontend: Uploads image
     Frontend -> Gateway: Sends image
     Gateway -> DECA: Sends image
