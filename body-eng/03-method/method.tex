@@ -114,14 +114,17 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
     participant "Gateway server" as Gateway
     participant "DECA server" as DECA
     participant "MICA server" as MICA
-    User -> Frontend: Uploads image
-    Frontend -> Gateway: Sends image
+
 
     alt use DECA to reconstruct face
+    User -> Frontend: Uploads image
+    Frontend -> Gateway: Sends image
     Gateway -> DECA: Sends image
     DECA -> DECA: Processes image
     DECA -> Gateway: Sends 3D avatar
     else use MICA to reconstruct face
+    User -> Frontend: Uploads image
+    Frontend -> Gateway: Sends image
     Gateway -> MICA: Sends image
     MICA -> MICA: Processes image
     MICA -> Gateway: Sends 3D avatar
