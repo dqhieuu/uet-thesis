@@ -165,9 +165,9 @@
 \usepackage{catchfile} % fetch file content
 \usepackage{plantuml}
 \usepackage{xstring} % string manipulation
-\usepackage{rotating} % for sideways figures
+\usepackage[figuresleft]{rotating} % for sideways figures
 
-\NewDocumentEnvironment{umlfigure}{O{} O{} O{orientation}}{%
+\NewDocumentEnvironment{umlfigure}{O{} O{} O{vertical}}{%
     \VerbatimOut{\PlantUMLJobname-plantuml.txt}}
 {%
     \endVerbatimOut
@@ -195,7 +195,9 @@
         \typeout{*** plantuml only works with lualatex ***}
     \fi
     \ifthenelse{\equal{\PlantUmlMode}{latex}}{
-        \ifstrequal{string}{string}{true}{false}
+        \IfStrEq{#3}{sideways}{
+            \be
+        }
         \begin{figure}[H]
             \centering
             \begin{adjustbox}{max width=\linewidth}
