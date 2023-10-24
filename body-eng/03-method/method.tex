@@ -146,10 +146,13 @@ The system allows the user to customize the 3D avatar's emotion by using sliders
     actor User
     boundary "Front-end interface" as Frontend
     control "Gateway server" as Gateway
-    control "Hair reconstruction server" as DECA
+    control "Hair reconstruction server" as Hair
     control "Emotion-to-FLAME server" as Emotion2FLAME
 
-    
+    User -> Frontend: Uploads image
+    Frontend -> Gateway: Sends image
+    Gateway -> DECA: Sends image
+
 
 
 \subsubsection{Flow: Try on different hairstyles with 3D avatar}
