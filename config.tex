@@ -161,10 +161,11 @@
     \end{figure}
 }
 
-\usepackage{fancyvrb}
-\usepackage{catchfile}
+\usepackage{fancyvrb} % better verbatim environment
+\usepackage{catchfile} % fetch file content
 \usepackage{plantuml}
-\usepackage{xstring}
+\usepackage{xstring} % string manipulation
+\usepackage{rotating} % for sideways figures
 
 \NewDocumentEnvironment{umlfigure}{O{} O{}}{%
     \VerbatimOut{\PlantUMLJobname-plantuml.txt}}
@@ -207,8 +208,6 @@
         \includegraphics[width=\maxwidth{\textwidth}]{\PlantUMLJobname-plantuml.\PlantUmlMode}
     }
 }
-
-\usepackage{rotating}
 
 
 \newcommand{\tablelinebreak}[1]{
