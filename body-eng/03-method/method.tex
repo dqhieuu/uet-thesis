@@ -140,6 +140,7 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
     @enduml
 \end{umlfigure}
 
+\clearpage
 
 \subsubsection{Flow: Create 3D avatar with customized emotions}
 The system allows the user to customize the 3D avatar's emotion by using sliders to adjust the intensity of a set of emotions. The system uses a simple emotion-to-FLAME regressive model to convert the emotion parameters to FLAME's pose and expression parameters. The emotion-to-FLAME regressive model is trained on the VKIST dataset, with the ground truth acquired by running the dataset through the pre-trained face reconstruction model (DECA, MICA, or EMOCA). The implemented flow for creating a 3D avatar with customized emotions is shown in the figure below.
