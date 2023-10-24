@@ -73,8 +73,6 @@ This use case is an extension of the main use case. The user can choose to custo
 
 This use case is an extension of the main use case. The user can choose to try on different hairstyles with the 3D avatar. The system will then output a 3D avatar with the selected hairstyle. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model, the texture map, and the hairstyle model. The sequence diagram of this use case is shown in the figure below.
 
-\clearpage
-
 \begin{umlfigure}[Analysis: Sequence diagram: Try on different hairstyles with 3D avatar.][seq_try_on_hairstyle]
     @startuml
     actor User
@@ -145,6 +143,8 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
 
 \subsubsection{Flow: Create 3D avatar with customized emotions}
 The system allows the user to customize the 3D avatar's emotion by using sliders to adjust the intensity of a set of emotions. The system uses a simple emotion-to-FLAME regressive model to convert the emotion parameters to FLAME's pose and expression parameters. The emotion-to-FLAME regressive model is trained on the VKIST dataset, with the ground truth acquired by running the dataset through the pre-trained face reconstruction model (DECA, MICA, or EMOCA). The implemented flow for creating a 3D avatar with customized emotions is shown in the figure below.
+
+\clearpage
 
 \begin{umlfigure}[Implementation: Sequence diagram: Create 3D avatar with customized emotions.][seq_create_3d_avatar_emotion_implementation]
     @startuml
