@@ -76,19 +76,18 @@
 
 % Set chapter begin style
 \usepackage[explicit]{titlesec}
-\titleclass{\subsubsubsection}{straight}[\subsection]
 \titleformat{\section}[display]{\raggedleft\Large}{Chapter \thesection \\
     \vspace{1.5em}
     \bfseries\MakeUppercase{#1}}{0em}{}
 \titleformat{name=\section,numberless}{\Large\bfseries\centering\MakeUppercase}{#1}{0em}{}
 
-
+\titleclass{\subsubsubsection}{straight}[\subsection]
 \newcounter{subsubsubsection}[subsubsection]
 \renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
 \renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}}
 
 \titleformat{\subsubsubsection}
-{\normalfont\small\bfseries}{\thesubsubsubsection \hspace{0.5em} #1}{1em}{}
+{\bfseries\itshape}{\thesubsubsubsection \hspace{0.5em} #1}{1em}{}
 \titlespacing*{\subsubsubsection}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
