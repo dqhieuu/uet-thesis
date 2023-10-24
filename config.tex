@@ -195,7 +195,7 @@
         \typeout{*** plantuml only works with lualatex ***}
     \fi
     \ifthenelse{\equal{\PlantUmlMode}{latex}}{
-        \IfStrEq{#3}{sideways}{
+        \ifthenelse{\equal{#3}{sideways}}{
             \begin{sidewaysfigure}[H]
                 \centering
                 \begin{adjustbox}{max width=\linewidth}
