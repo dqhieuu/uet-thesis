@@ -184,6 +184,38 @@ The system allows the user to customize the 3D avatar's emotion by using sliders
 
 \subsubsection{Flow: Try on different hairstyles with 3D avatar}
 
+The system allows the user to try on different hairstyles with the 3D avatar. The system uses a pre-trained image-to-hair model to reconstruct the user's hairstyle from the input image. The implemented flow for trying on different hairstyles with the 3D avatar is shown in the figure below. If the user chooses to try on different hairstyles, the system will not use the user's hairstyle from the input image. Instead, the system will use one of the hairstyles in the database. The user can choose to download the 3D avatar with the hairstyle as a zip file, which contains the 3D avatar model, the texture map, and the hairstyle model. The implemented flow for trying on different hairstyles with the 3D avatar is shown in the figure below.
+
+\begin{umlfigure}[Implementation: Sequence diagram: Try on different hairstyles with 3D avatar.][seq_try_on_hairstyle_implementation]
+    @startuml
+    actor User
+    boundary "Front-end interface" as Frontend
+    control "Gateway server" as Gateway
+    control "Face reconstruction server" as Face
+    control "Image-to-hair server" as Hair
+
+    User -> Frontend: Uploads image
+    Frontend -> Gateway: Sends image
+    Gateway -> Face: Sends image
+    Face -> Face: Processes image
+    Face -> Gateway: Sends 3D avatar
+    Gateway -> Frontend: Sends 3D avatar
+    Frontend -> User: Outputs 3D avatar
+    User -> Frontend: Select hairstyle
+    Frontend -> Gateway: Sends hairstyle ID
+    Gateway -> Hair: Sends hairstyle ID
+    Hair -> Hair: Processes hairstyle
+    Hair -> Gateway: Sends hairstyle
+    Gateway -> Frontend: Sends hairstyle
+    Frontend -> User: Outputs 3D avatar with hairstyle
+    User -> User: View 3D avatar
+
+    opt User wants to download 3D avatar
+    User -> Frontend: Download 3D avatar
+    end
+    @enduml
+\end{umlfigure}
+
 
 \includefigure[The pipeline of the proposed system.]{images/system_pipeline.png}
 
