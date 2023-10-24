@@ -180,11 +180,11 @@ The system allows the user to customize the 3D avatar's emotion by using sliders
 
 \clearpage
 
-
-
 \subsubsection{Flow: Try on different hairstyles with 3D avatar}
 
 The system allows the user to try on different hairstyles with the 3D avatar. The system uses a pre-trained image-to-hair model to reconstruct the user's hairstyle from the input image. The implemented flow for trying on different hairstyles with the 3D avatar is shown in the figure below. If the user chooses to try on different hairstyles, the system will not use the user's hairstyle from the input image. Instead, the system will use one of the hairstyles in the database. The user can choose to download the 3D avatar with the hairstyle as a zip file, which contains the 3D avatar model, the texture map, and the hairstyle model. The implemented flow for trying on different hairstyles with the 3D avatar is shown in the figure below.
+
+\clearpage
 
 \begin{umlfigure}*[Implementation: Sequence diagram: Try on different hairstyles with 3D avatar.][seq_try_on_hairstyle_implementation]
     @startuml
@@ -226,6 +226,9 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
     @enduml
 \end{umlfigure}
 
+\clearpage
+
+\subsection{3D face reconstruction}
 
 \includefigure[The pipeline of the proposed system.]{images/system_pipeline.png}
 
@@ -240,10 +243,6 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
     \item After the head model and the hair model are generated, they are combined with an alignment procedure to create an accurate 3D avatar zip file.
     \item Finally, the zip file is sent to the user, where the 3D renderer on the user's web browser will be used to render the 3D avatar.
 \end{itemize}
-
-
-\subsection{3D face reconstruction}
-This
 
 \subsection{Customizable facial emotion}
 
