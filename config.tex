@@ -196,15 +196,15 @@
     \fi
     \ifthenelse{\equal{\PlantUmlMode}{latex}}{
         \IfStrEq{#1}{\BooleanTrue}{
-            \begin{figure}[H]
+            \begin{sidewaysfigure}
                 \centering
                 \begin{adjustbox}{max width=\linewidth}
                     \input{\PlantUMLJobname-plantuml.tex}
                 \end{adjustbox}
                 \captionsetup{font=bf}
-                \IfValueT{#2}{\caption{ABC #2}}
+                \IfValueT{#2}{\caption{#2}}
                 \IfValueT{#3}{\label{fig:#3}}
-            \end{figure}
+            \end{sidewaysfigure}
         }{
             \begin{figure}[H]
                 \centering
