@@ -196,17 +196,26 @@
     \fi
     \ifthenelse{\equal{\PlantUmlMode}{latex}}{
         \IfStrEq{#3}{sideways}{
-            \be
+            \begin{sidewaysfigure}[H]
+                \centering
+                \begin{adjustbox}{max width=\linewidth}
+                    \input{\PlantUMLJobname-plantuml.tex}
+                \end{adjustbox}
+                \captionsetup{font=bf}
+                \IfValueT{#1}{\caption{#1}}
+                \IfValueT{#2}{\label{fig:#2}}
+            \end{sidewaysfigure}
+        }{
+            \begin{figure}[H]
+                \centering
+                \begin{adjustbox}{max width=\linewidth}
+                    \input{\PlantUMLJobname-plantuml.tex}
+                \end{adjustbox}
+                \captionsetup{font=bf}
+                \IfValueT{#1}{\caption{#1}}
+                \IfValueT{#2}{\label{fig:#2}}
+            \end{figure}
         }
-        \begin{figure}[H]
-            \centering
-            \begin{adjustbox}{max width=\linewidth}
-                \input{\PlantUMLJobname-plantuml.tex}
-            \end{adjustbox}
-            \captionsetup{font=bf}
-            \IfValueT{#1}{\caption{#1}}
-            \IfValueT{#2}{\label{fig:#2}}
-        \end{figure}
     }{
         \includegraphics[width=\maxwidth{\textwidth}]{\PlantUMLJobname-plantuml.\PlantUmlMode}
     }
