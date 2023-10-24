@@ -133,7 +133,10 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
     Gateway -> Frontend: Sends 3D avatar
     Frontend -> User: Outputs 3D avatar
     User -> User: Views 3D avatar
+
+    opt User wants to download 3D avatar
     User -> Frontend: Downloads 3D avatar
+    end
     @enduml
 \end{umlfigure}
 
@@ -159,12 +162,14 @@ The system allows the user to customize the 3D avatar's emotion by using sliders
     User -> Frontend: Adjust emotion
     Frontend -> Gateway: Sends emotion parameters
     Gateway -> Emotion2FLAME: Sends emotion parameters
-    Emotion2FLAME -> Emotion2FLAME: Processes emotion parameters
-    Emotion2FLAME -> Gateway: Sends FLAME parameters
-    Gateway -> Frontend: Sends FLAME parameters
+    Emotion2FLAME -> Emotion2FLAME: Infers FLAME parameters
+    Emotion2FLAME -> Face: Sends FLAME parameters
+    Face -> Face: Applies FLAME parameters to 3D avatar
+    Face -> Gateway: Sends emotion-applied 3D avatar
+    Gateway -> Frontend: Sends 3D avatar
     Frontend -> User: Outputs emotion-applied 3D avatar
     User -> User: View 3D avatar
-    
+
     opt User wants to download 3D avatar
     User -> Frontend: Download 3D avatar
     end
