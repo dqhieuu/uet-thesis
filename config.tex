@@ -167,7 +167,7 @@
 \usepackage{xstring} % string manipulation
 \usepackage{rotating} % for sideways figures
 
-\NewDocumentEnvironment{umlfigure}{O{} O{}}{%
+\NewDocumentEnvironment{umlfigure}{O{} O{} O{orientation}}{%
     \VerbatimOut{\PlantUMLJobname-plantuml.txt}}
 {%
     \endVerbatimOut
@@ -195,6 +195,7 @@
         \typeout{*** plantuml only works with lualatex ***}
     \fi
     \ifthenelse{\equal{\PlantUmlMode}{latex}}{
+        \ifstrequal{string}{string}{true}{false}
         \begin{figure}[H]
             \centering
             \begin{adjustbox}{max width=\linewidth}
