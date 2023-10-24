@@ -167,7 +167,7 @@
 \usepackage{xstring} % string manipulation
 \usepackage[figuresleft]{rotating} % for sideways figures
 
-\NewDocumentEnvironment{umlfigure}{O{} O{} O{}}{%
+\NewDocumentEnvironment{umlfigure}{s O{} O{}}{%
     \VerbatimOut{\PlantUMLJobname-plantuml.txt}}
 {%
     \endVerbatimOut
