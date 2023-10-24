@@ -193,6 +193,7 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
     control "Gateway server" as Gateway
     control "Face reconstruction server" as Face
     control "Image-to-hair server" as Hair
+    database "Hairstyle database" as DB
 
     User -> Frontend: Uploads image
     Frontend -> Gateway: Sends image
@@ -201,10 +202,16 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
     Face -> Gateway: Sends 3D avatar
     Gateway -> Frontend: Sends 3D avatar
     Frontend -> User: Outputs 3D avatar
+
     User -> Frontend: Select hairstyle
     Frontend -> Gateway: Sends hairstyle ID
     Gateway -> Hair: Sends hairstyle ID
+    
+    opt User wants to try on different hairstyles
     Hair -> Hair: Processes hairstyle
+    end
+
+
     Hair -> Gateway: Sends hairstyle
     Gateway -> Frontend: Sends hairstyle
     Frontend -> User: Outputs 3D avatar with hairstyle
