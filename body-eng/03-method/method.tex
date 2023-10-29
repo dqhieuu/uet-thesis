@@ -324,8 +324,16 @@ The emotion-to-FLAME regressive model is a simple MLP (multi-layer perceptron) m
 
 The "linear" layers perform linear transformations on the input data, which means they apply a weight matrix and a bias vector to the input. The ReLU activation function is used to introduce non-linearity into the network. Since the emotion parameters in FLAME are projected linearly to the mesh vertices, the linear layers perform well as a linear regressor.
 
-The loss function used is the mean absolute error (MAE/L1) loss function, which is defined as:
+The loss function used is the mean absolute error (MAE/L1) loss function $L_{MAE}$, which is defined as:
 
 \begin{equation}
     L_{MAE} = \frac{1}{N}\sum_{i=1}^{N}|y_i-\hat{y_i}|
+\end{equation}
+
+where $y_i$ is the ground truth, $\hat{y_i}$ is the predicted value, and $N$ is the number of samples.
+
+With the output of the emotion-to-FLAME model, the loss function is defined as:
+
+\begin{equation}
+    L_{MAE} = 
 \end{equation}
