@@ -321,7 +321,7 @@ The emotion-to-FLAME regressive model is a simple feed-forward model with 6 inpu
 
 \includefigure[The emotion-to-FLAME model architecture.]{images/emotion_net.png}[0.6]
 
-The "linear" layers perform linear transformations on the input data, which means they apply a weight matrix and a bias vector to the input. The ReLU activation function is used to introduce non-linearity into the network. Since the emotion parameters in FLAME are projected linearly to the mesh vertices, the linear layers perform well as a linear regressor.
+The "linear" layers perform linear transformations on the input data, which means they apply a weight matrix and a bias vector to the input. The ReLU activation function is used to introduce non-linearity into the network. Since the emotion parameters in FLAME are projected linearly to the mesh vertices, the linear layers should perform well as a linear regressor.
 
 The loss function used is the mean absolute error (MAE/L1) loss function $L_{MAE}$, which is defined as:
 
