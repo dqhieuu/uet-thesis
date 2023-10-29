@@ -258,9 +258,15 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
 \subsubsection{Face and hair alignment}
 
 \subsection{Contribution: Customizable facial emotion}
-- With VKIST dataset, get a total of 6 emotion parameters: happy, sad, angry, surprised, disgusted, fearful
+
 
 \subsubsection{The idea}
+- With VKIST dataset, get a total of 6 emotion parameters: happy, sad, angry, surprised, disgusted, fearful
+- Train a simple emotion-to-FLAME regressive model to convert emotion parameters to FLAME's pose and expression parameters
+- The emotion-to-FLAME regressive model is trained on the VKIST dataset, with the ground truth acquired by running the dataset through the pre-trained face reconstruction model (DECA, MICA, or EMOCA).
+- Two models are trained: one with emotion parameters as input and FLAME's pose and expression parameters as output, and one with emotion parameters plus FLAME's identity (shape) parameters as input and FLAME's pose and expression parameters as output.
+
 
 \subsubsection{Model architecture}
+- The emotion-to-FLAME regressive model is a simple MLP (multi-layer perceptron) model with 6 input nodes and 12 output nodes.
 
