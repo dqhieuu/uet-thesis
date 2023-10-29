@@ -316,9 +316,8 @@ The idea is to create a simple emotion-to-FLAME regressive model to convert emot
 
 
 \subsubsection{Model architecture}
-% - The emotion-to-FLAME regressive model is a simple MLP (multi-layer perceptron) model with 6 input nodes and 56 output nodes.
 
-The emotion-to-FLAME regressive model is a simple MLP (multi-layer perceptron) model with 6 input nodes and 56 output nodes, where the first 50 nodes are expression parameters, and the next 6 nodes are pose parameters. The model architecture is shown in the figure below.
+The emotion-to-FLAME regressive model is a simple feed-forward model with 6 input nodes and 56 output nodes, where the first 50 nodes are expression parameters, and the next 6 nodes are pose parameters. The model architecture is shown in the figure below.
 
 \includefigure[The emotion-to-FLAME model architecture.]{images/emotion_net.png}
 
@@ -341,3 +340,5 @@ With the output of the emotion-to-FLAME model, the loss function is defined as:
     \end{split}
 \end{equation}
 where $P_{exp}$ is the ground truth expression parameters, $\hat{P_{exp}}$ is the predicted expression parameters, $P_{pose}$ is the ground truth pose parameters, $\hat{P_{pose}}$ is the predicted pose parameters. Within pose parameters, there are neck pose parameters and global pose parameters. $\alpha$ and $\beta$ are the weights for the neck pose and global pose loss, respectively.
+
+An alternative architecture which t
