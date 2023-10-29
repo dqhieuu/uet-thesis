@@ -319,7 +319,7 @@ The idea is to create a simple emotion-to-FLAME regressive model to convert emot
 
 The emotion-to-FLAME regressive model is a simple feed-forward model with 6 input nodes and 56 output nodes, where the first 50 nodes are expression parameters, and the next 6 nodes are pose parameters. The model architecture is shown in the figure below.
 
-\includefigure[The emotion-to-FLAME model architecture.]{images/emotion_net.png}
+\includefigure[The emotion-to-FLAME model architecture.]{images/emotion_net.png}[0.6]
 
 The "linear" layers perform linear transformations on the input data, which means they apply a weight matrix and a bias vector to the input. The ReLU activation function is used to introduce non-linearity into the network. Since the emotion parameters in FLAME are projected linearly to the mesh vertices, the linear layers perform well as a linear regressor.
 
@@ -341,4 +341,4 @@ With the output of the emotion-to-FLAME model, the loss function is defined as:
 \end{equation}
 where $P_{exp}$ is the ground truth expression parameters, $\hat{P_{exp}}$ is the predicted expression parameters, $P_{pose}$ is the ground truth pose parameters, $\hat{P_{pose}}$ is the predicted pose parameters. Within pose parameters, there are neck pose parameters and global pose parameters. $\alpha$ and $\beta$ are the weights for the neck pose and global pose loss, respectively.
 
-An alternative architecture which t
+An alternative model that additionally takes FLAME's identity parameters as input is also tested. The only difference in this model is the number of input nodes, which is 56 instead of 6. The loss function is the same as the previous model.

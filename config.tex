@@ -125,13 +125,13 @@
 }
 
 
-\NewDocumentCommand{\includefigure}{O{} m}{
+\NewDocumentCommand{\includefigure}{O{} m O{0.9}}{
     \begin{figure}[H]
         \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
         \centering
         \vspace{1cm}
         \captionsetup{font=bf}
-        \includegraphics[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#2}
+        \includegraphics[width=0.9\textwidth]{#2}
         \IfValueT{#1}{\caption{#1}}
         \label{fig:#2}
     \end{figure}
