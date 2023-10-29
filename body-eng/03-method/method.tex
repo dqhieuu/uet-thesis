@@ -335,5 +335,7 @@ where $y_i$ is the ground truth, $\hat{y_i}$ is the predicted value, and $N$ is 
 With the output of the emotion-to-FLAME model, the loss function is defined as:
 
 \begin{equation}
-    L_{MAE} = 
+    Loss = Loss(P_{exp},\hat{P_{exp}}) + Loss(P_{pose},\hat{P_{pose}})
+
+    = L_{MAE}(P_{exp},\hat{P_{exp}}) + \alpha\cdot L_{MAE}(P_{neck_pose},\hat{P_{neck_pose}}) + \beta\cdot L_{MAE}(P_{global_pose},\hat{P_{global_pose}})
 \end{equation}
