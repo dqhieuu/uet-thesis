@@ -231,19 +231,19 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
 
 \subsection{System architecture and algorithm details}
 
-\includefigure[The pipeline of the proposed system.]{images/system_pipeline.png}
+% \includefigure[The pipeline of the proposed system.]{images/system_pipeline.png}
 
 
-\begin{itemize}
-    \item The system takes an image input with an API endpoint
-    \item The image-to-head encoder outputs the FLAME's shape, pose, and expression parameters, and the extracted face texture.
-    \item Optionally, the system can take human-friendly emotion parameters to output FLAME's pose and expression parameters, using a simple emotion-to-FLAME regressive model.
-    \item The FLAME-to-output decoder takes FLAME's shape, pose, and expression parameters, texture coordinate, and extracted image texture to output a 3D model with a texture map and a normal map.
-    \item While the head is being processed, the image-to-hair model outputs the reconstructed strand-based 3D hair model.
-    \item Optionally, a 3D hair model can be chosen from the database instead of using the image-to-hair model for the try-on purpose.
-    \item After the head model and the hair model are generated, they are combined with an alignment procedure to create an accurate 3D avatar zip file.
-    \item Finally, the zip file is sent to the user, where the 3D renderer on the user's web browser will be used to render the 3D avatar.
-\end{itemize}
+% \begin{itemize}
+%     \item The system takes an image input with an API endpoint
+%     \item The image-to-head encoder outputs the FLAME's shape, pose, and expression parameters, and the extracted face texture.
+%     \item Optionally, the system can take human-friendly emotion parameters to output FLAME's pose and expression parameters, using a simple emotion-to-FLAME regressive model.
+%     \item The FLAME-to-output decoder takes FLAME's shape, pose, and expression parameters, texture coordinate, and extracted image texture to output a 3D model with a texture map and a normal map.
+%     \item While the head is being processed, the image-to-hair model outputs the reconstructed strand-based 3D hair model.
+%     \item Optionally, a 3D hair model can be chosen from the database instead of using the image-to-hair model for the try-on purpose.
+%     \item After the head model and the hair model are generated, they are combined with an alignment procedure to create an accurate 3D avatar zip file.
+%     \item Finally, the zip file is sent to the user, where the 3D renderer on the user's web browser will be used to render the 3D avatar.
+% \end{itemize}
 
 \subsubsection{Face reconstruction}
 - Outputs FLAME as the base model
