@@ -256,6 +256,50 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
 - Can choose to use hairstyles from the database instead of using Hairnet
 
 \subsubsection{Face and hair alignment}
+To make our system a fully automated avatar reconstruction system, the hair model and head model need to be automatically aligned with each other. To achieve this, we propose an automated procedure for aligning the hair model with the head model.
+First, we define the anchor point of the hair object and the head object (Fig \ref{head_hair_sampled}) as the highest point of the mesh and the center of the mesh, respectively, from the top view.
+
+For the head mesh $M_{head}=\{p_1,\ p_2,...,\ p_N\}$, we sample 5\% of the points with the highest z-axis values to create the set $M_{head\_5\%}$. For the hair mesh $M_{hair}$, for every hair strand, we sample 5\% of the points that start from the strand root to create the set $M_{hair\_5\%}$. We find that 5\% is enough to sample the points that form the head top, which can be used to approximate the center of the head and the hair accurately.
+
+\includefigure[Sampled points in hair and head models to calculate the anchor points.]{images/head_hair_sampled.png}
+
+We then calculate the hair anchor point $A_{hair}$ and the head anchor point $A_{head}$ by taking the means of the x-axis and the y-axis and the highest value of the z-axis.
+
+\begin{equation}
+    A = \begin{pmatrix}
+        x_{mean\_5\%} \\
+        y_{mean\_5\%} \\
+        z_{max\_5\%}
+    \end{pmatrix}
+    = \begin{pmatrix}
+        \frac{x_{p1}+x_{p2}+...+x_{pN5\%}}{0.05N} \\
+        \frac{y_{p1}+y_{p2}+...+y_{pN5\%}}{0.05N} \\
+        \max(z_{p1},z_{p2},...,y_{pN_{5\%}})
+    \end{pmatrix}
+\end{equation}
+
+With the hair anchor and the head anchor, the translation vector $T_{hair}$ (Fig \ref{hair_translation}) is calculated by taking the subtraction of the 2 anchor points and adding it by a constant calibration value $C$.
+
+\begin{equation}
+    T_{hair} = A_{hair} - A_{head} + C
+\end{equation}
+
+For the scaling adjustment, first, I find the axis-aligned bounding boxes of the hair model and the head model. An assumption is made, which is the head model and the hair model are front-facing, as per the requirement of the captured image. Thus, the front-view lengths of the hair and the head can be deduced by taking the x-axis lengths. With the hair and the head length, the scaling coefficient can be calculated by taking the ratio of the hair length to the head length and can be adjusted with the addition constant $C$.
+
+\begin{equation}
+    S_{hair} = \frac{W_{hair}}{W_{head}} + C
+\end{equation}
+
+The final adjustment formula can be calculated with the translation vector $T_{hair}$ and the scaling coefficient $S_{hair}$
+
+\begin{equation}
+    p_{new} = \frac{1}{S_{hair}}\cdot(p_{old} + T_{hair})
+\end{equation}
+
+By aligning the hair model with the already aligned head model, the problem of Hairnet being unable to align with the captured image as mentioned in Xu et al.'s paper \cite{xuDeep3DPortrait2020} is addressed.
+
+
+\includefigure[The alignment of the hair model with the head model by translation.]{images/hair_translation.png}
 
 \subsection{Contribution: Customizable facial emotion}
 
