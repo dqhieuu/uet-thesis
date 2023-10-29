@@ -335,7 +335,10 @@ where $y_i$ is the ground truth, $\hat{y_i}$ is the predicted value, and $N$ is 
 With the output of the emotion-to-FLAME model, the loss function is defined as:
 
 \begin{equation}
-    Loss = Loss(P_{exp},\hat{P_{exp}}) + Loss(P_{pose},\hat{P_{pose}})
-
-    = L_{MAE}(P_{exp},\hat{P_{exp}}) + \alpha\cdot L_{MAE}(P_{neck_pose},\hat{P_{neck_pose}}) + \beta\cdot L_{MAE}(P_{global_pose},\hat{P_{global_pose}})
+    \begin{split}
+        Loss & = Loss(P_{exp},\hat{P_{exp}}) + Loss(P_{pose},\hat{P_{pose}})                               \\
+             & = L_{MAE}(P_{exp},\hat{P_{exp}}) + \alpha\cdot L_{MAE}(P_{neck\_pose},\hat{P_{neck\_pose}}) \\ + \beta\cdot L_{MAE}(P_{global\_pose},\hat{P_{global\_pose}})
+    \end{split}
 \end{equation}
+
+where $P_{exp}$ is the ground truth expression parameters, $\hat{P_{exp}}$ is the predicted expression parameters, $P_{pose}$ is the ground truth pose parameters, $\hat{P_{pose}}$ is the predicted pose parameters. Within pose parameters, there are neck pose parameters and global pose parameters. $\alpha$ and $\beta$ are the weights for the neck pose and global pose loss, respectively.
