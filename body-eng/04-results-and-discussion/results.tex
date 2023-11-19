@@ -7,6 +7,7 @@ To train the hair reconstruction model, we used the public HairNet dataset \cite
 For face head reconstruction, we used a combination of pre-trained DECA \cite{fengLearningAnimatableDetailed2021} and pre-trained MICA \cite{zielonkaMetricalReconstructionHuman2022}  models.
 To evaluate the system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system.
 \subsubsection{Face reconstruction}
+We use the pre-trained DECA model for face reconstruction. We allow the DECA to be swapped with other face reconstruction models such as MICA \cite{zielonkaMetricalReconstructionHuman2022} or EMOCA.
 To train the emotion model, we use the VKIST dataset of 
 
 
