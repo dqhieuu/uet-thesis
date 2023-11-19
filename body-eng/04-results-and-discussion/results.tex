@@ -5,20 +5,23 @@
 \subsubsection{Hair reconstruction}
 \subsubsubsection{Training}
 To train the hair reconstruction model, we used the public HairNet dataset \cite{zhouHairNetSingleViewHair2018}. Using our generation method, we were able to create a dataset of roughly 30,000 images for training the hair reconstruction model from the database of 343 hair models.
+
 \subsubsection{Face reconstruction}
 \subsubsubsection{Training}
-We use the pre-trained DECA model for face reconstruction. It can swap DECA with other face reconstruction models such as MICA \cite{zielonkaMetricalReconstructionHuman2022} or EMOCA. We then apply the base face reconstruction model with our emotion model to generate the final avatar model.
-\subsection{Avatar reconstruction}
-Avatar reconstruction is the combination of hair reconstruction and face reconstruction. We use the pre-trained DECA model for face reconstruction. It can swap DECA with other face reconstruction models such as MICA \cite{zielonkaMetricalReconstructionHuman2022} or EMOCA. We then apply the base face reconstruction model with our emotion model to generate the final avatar model.
+We use the pre-trained DECA model for face reconstruction. The system can swap DECA with other face reconstruction models such as MICA \cite{zielonkaMetricalReconstructionHuman2022} or EMOCA. We then apply the base face reconstruction model with our emotion model to generate the final avatar model.
+
+\subsubsection{Avatar reconstruction}
+Avatar reconstruction is the combination of hair reconstruction and face reconstruction. We use the pre-trained DECA (or MICA, EMOCA) model for face reconstruction. We then apply the base face reconstruction model with our emotion model to generate the final avatar model.
+
 \subsubsubsection{Evaluation}
 To evaluate the system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system.
 
-\subsection{Customizable facial emotions}
+\subsubsection{Customizable facial emotions}
 \subsubsubsection{Training}
 To train the emotion network, we use the VKIST dataset which consists of 889 images of 127 subjects with 7 captured emotions (neutral, anger, disgust, fear, happiness, sadness, surprise). All images are captured from the front view with a resolution of 2976x1984. 90\% of the images are used for training and 10\% for testing. From the dataset, we extract the face region and resize it to 256x256. We then use the pre-trained DECA model to extract the expression parameters from the face images. These expression parameters serve as the ground truth for the emotion model.
 
 \subsubsubsection{Evaluation}
-To evaluate the emotion model, the FaceScape dataset, which consists of 847 subjects, is used.
+To evaluate the emotion model, the FaceScape dataset, which consists of 847 subjects, is used. The dataset consists of scanned 3D face models of 20 different expressions, and 56 images corresponding to 56 camera angles. However, only the data of 359 subjects is used because the remaining subjects aren't provided with the captured images/expressions.
 
 \subsection{Experimental Scenarios}
 
