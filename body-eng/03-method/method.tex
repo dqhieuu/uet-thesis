@@ -98,7 +98,7 @@ Essentially, the system architecture serves the purpose of taking a single-view 
 
 The system holds a database for hairstyles, which is convenient for try-on purposes. Instead of going through the standard flow where the system extracts the user's hairstyle from the captured image, the user can try on a variety of hairstyles in the database to see if any of these hairstyles suit their face.
 
-The details of each reconstruction block will be explained in detail in the sections below, where the red blocks are the blocks that are novel and implemented in this thesis.
+The details of each reconstruction block will be explained in detail in the sections below, where the double-bordered blocks are the blocks that are novel and implemented in this thesis.
 
 \subsubsection{Flow for use case: Create 3D avatar from a portrait image}
 For taking a single-view portrait image as input, the system provides a front-end interface, i.e. a web page, where the user can upload their image. The front-end interface allows the user to send the image to a gateway server, which is responsible for handling the user's requests and sending the image to the back-end server for processing. By using a gateway server, the system architecture can be modularized, which means multiple reconstruction backends can be used as substitutions. A gateway also allows the system to easily scale up to handle a large number of requests by adding more back-end servers.
