@@ -11,17 +11,17 @@ To train the hair reconstruction model, we used the public HairNet dataset \cite
 We use the pre-trained DECA model for face reconstruction. The system can swap DECA with other face reconstruction models such as MICA \cite{zielonkaMetricalReconstructionHuman2022} or EMOCA. We then apply the base face reconstruction model with our emotion model to generate the final avatar model.
 
 \subsubsection{Avatar reconstruction}
-Avatar reconstruction is the combination of hair reconstruction and face reconstruction. We use the pre-trained DECA (or MICA, EMOCA) model for face reconstruction. We then apply the base face reconstruction model with our emotion model to generate the final avatar model.
+Avatar reconstruction is the combination of hair reconstruction and face reconstruction. We use the pre-trained DECA (which can be swapped with MICA, EMOCA) model for face reconstruction. We then apply the base face reconstruction model with our emotion model to generate the final avatar model.
 
 \subsubsubsection{Evaluation}
 To evaluate the system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system.
 
 \subsubsection{Customizable facial emotions}
 \subsubsubsection{Training}
-To train the emotion network, we use the VKIST dataset which consists of 889 images of 127 subjects with 7 captured emotions (neutral, anger, disgust, fear, happiness, sadness, surprise). All images are captured from the front view with a resolution of $2976\times1984$. 90\% of the images are used for training and 10\% for testing. From the dataset, we extract the face region and resize it to 256x256. We then use the pre-trained DECA model to extract the expression parameters from the face images. These expression parameters serve as the ground truth for the emotion model.
+To train the emotion network, we use the VKIST dataset which consists of 889 images of 127 subjects with 7 captured emotions (neutral, anger, disgust, fear, happiness, sadness, surprise). All images are captured from the front view with a resolution of $2976\times1984$. 90\% of the images are used for training and 10\% for testing. From the dataset, we extract the face region and resize it to $256\times256$. We then use the pre-trained DECA model to extract the expression parameters from the face images. These expression parameters serve as the ground truth for the emotion model.
 
 \subsubsubsection{Evaluation}
-To evaluate the emotion model, the FaceScape dataset, which consists of 847 subjects, is used. The dataset consists of scanned 3D face models of 20 different expressions, and 56 images corresponding to 56 camera angles. However, only the data of 359 subjects is used because the remaining subjects aren't provided with the captured images/expressions.
+To evaluate the emotion model, we use the FaceScape dataset, which consists of 847 subjects, is used. The dataset consists of scanned 3D face models of 20 different expressions, and 56 images corresponding to 56 camera angles to create each of the scanned models. I only used the data of 359 subjects because the remaining subjects weren't provided with the captured images/expressions, which makes it more difficult to evaluate the effectiveness of my method.
 
 \subsection{Experimental Scenarios}
 
@@ -37,7 +37,7 @@ The DIFD (Difference in Facial Descriptors) evaluation method determines whether
 PSNR and SSIM are widely used non-deep learning methods that measure similarity based on specific image attributes and provide information about the similarity in terms of noise and structure.
 LPIPS is a deep learning-based metric that employs a neural network to learn image features and compute the similarity between two images based on these features.
 
-\subsubsection{Customizable emotions}
+\subsubsection{Customizable facial emotions}
 To evaluate the quality of the customization of the facial emotions, we follow the method used in the NoW challenge and compare the results of different method outputs with the ground truth. The ground truth is the scanned meshes of the FaceScape dataset, compared with the reconstructed face models.
 
 \subsubsubsection{Measurements: The NoW challenge}
@@ -46,7 +46,9 @@ The NoW challenge provides a benchmark method specialized in face reconstruction
 \includefigure[The area used for evaluation in the NoW challenge.]{images/now_dataset.png}
 
 \subsection{Experimental Results and Commentary}
-\subsubsection{Quantitative results}
+\subsubsection{Avatar reconstruction}
+
+\subsubsubsection{Quantitative results}
 Table \ref{loss_stats} illustrates the results of the aforementioned measurements when comparing our method with several other 3D face reconstruction methods. The results show that, in terms of comparison, our results are not as good as many other methods such as i3DMM and MoFaNeRF because they applied the measurements to hairless faces. However, we also see that all of the measurement results meet the requirements. In particular, the average value of DIFD is 0.25, which indicates that the synthesized output image has been evaluated as retaining the represented features of the same person as the input image.
 
 \begin{table}[H]
@@ -63,7 +65,9 @@ Table \ref{loss_stats} illustrates the results of the aforementioned measurement
     \label{loss_stats}
 \end{table}
 
-\subsubsection{Qualitative results}
+\subsubsubsection{Qualitative results}
 Out of the 33 respondents, the survey showed that an impressive 93.8\% of the respondents were able to correctly identify that the input image and the synthesized face image belonged to the same  ($score >= 3$). Of those, 14\% were evaluated as being very similar with scores of 5, and 49.3\% were evaluated with scores of 4. %Likert scale provides a way for participants to express their opinions on a spectrum of agreement, allowing us to gather more nuanced feedback on the quality and realism of our avatar reconstruction system. 
 
 \includesmallfigure[The survey result.]{images/head_similarity.png}
+
+\subsubsection{Customizable facial emotions}
