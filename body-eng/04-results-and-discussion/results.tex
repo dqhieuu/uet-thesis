@@ -20,6 +20,8 @@ To evaluate the system, we used face images generated from a StyleGAN \cite{karr
 \subsubsubsection{Training}
 To train the emotion network, we use the VKIST dataset which consists of 889 images of 127 subjects with 7 captured emotions (neutral, anger, disgust, fear, happiness, sadness, surprise). All images are captured from the front view with a resolution of $2976\times1984$. The link to download the dataset is available at (https://tinyurl.com/vkist-face-front-02). 90\% of the images are used for training and 10\% for testing. From the dataset, we extract the face region and resize it to $256\times256$. We then use the pre-trained DECA model to extract the expression parameters from the face images. These expression parameters serve as the ground truth for the emotion model.
 
+\includefigure[Sample images in the VKIST dataset.]{images/vkist_dataset.jpg}
+
 \subsubsubsection{Evaluation}
 To evaluate the emotion model, we use the FaceScape dataset, which consists of 847 subjects, is used. The dataset consists of scanned 3D face models of 20 different expressions, and 56 images corresponding to 56 camera angles to create each of the scanned models. Only the data of 359 subjects is used because the remaining subjects aren't provided with the captured images/expressions, which makes it more difficult to evaluate the effectiveness of the method.
 
@@ -74,4 +76,4 @@ Out of the 33 respondents, the survey showed that an impressive 93.8\% of the re
 \subsubsection{Customizable facial emotions}
 
 \subsubsubsection{Quantitative results}
-We compare our method 
+We compare our method
