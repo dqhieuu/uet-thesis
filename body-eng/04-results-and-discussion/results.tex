@@ -78,6 +78,21 @@ Out of the 33 respondents, the survey showed that an impressive 93.8\% of the re
 \subsubsection{Customizable facial emotions}
 
 \subsubsubsection{Quantitative results}
-We use the FaceScape scanned mesh dataset as the ground truth for the evaluation. The comparison is made between the ground truth and the reconstructed mesh. We compare the ground truth with 3 types of face reconstruction model: One use the DECA model with the emotion set to neutral, one use DECA with auto-detected emotion. One use the DECA model with our emotion model. The results are shown in the table below.
+We use the FaceScape scanned mesh dataset as the ground truth for the evaluation. The comparison is made between the ground truth and the reconstructed mesh. We compare the ground truth with 3 types of face reconstruction model: One use the DECA model with the emotion set to neutral, one use DECA with auto-detected emotion. One use the DECA model with our emotion model. The comparison is additionally made with two views using different input images: one from the front view and one from the side view. The results are shown in the table below.
+
+\begin{table}[H]
+    \centering
+    \captionsetup{font=bf}
+    \caption{Comparison of our emotion model with others}
+    \begin{tabularx}{\linewidth}{| X | X | X | X | X |}
+        \hline
+                            & \textbf{PSNR} & \textbf{SSIM} & \textbf{LPIPS} & \textbf{DIFD} \\ \hline\hline
+        \textbf{Our system} & 23.15         & 0.835         & 0.09           & 0.25          \\ \hline %0.2521 
+        \textbf{i3DMM}      & 24.45         & 0.904         & 0.11           & NA            \\ \hline
+        \textbf{MoFaNeRF}   & 31.49         & 0.951         & 0.06           & NA            \\ \hline
+    \end{tabularx}
+    \label{loss_stats}
+\end{table}
+
 
 \subsection{Screenshots of the system}
