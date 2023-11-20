@@ -84,12 +84,13 @@ We use the FaceScape scanned mesh dataset as the ground truth for the evaluation
     \centering
     \captionsetup{font=bf}
     \caption{Comparison of our emotion model with others}
-    \begin{tabularx}{\linewidth}{| X | X | X | X | X |}
+    \begin{tabularx}{\linewidth}{|X|XXX|XXX|}
         \hline
-                            & \textbf{PSNR} & \textbf{SSIM} & \textbf{LPIPS} & \textbf{DIFD} \\ \hline\hline
-        \textbf{Our system} & 23.15         & 0.835         & 0.09           & 0.25          \\ \hline %0.2521 
-        \textbf{i3DMM}      & 24.45         & 0.904         & 0.11           & NA            \\ \hline
-        \textbf{MoFaNeRF}   & 31.49         & 0.951         & 0.06           & NA            \\ \hline
+        \multirow{2}{*}{Method} & \multicolumn{3}{l|}{Front view image input} & \multicolumn{3}{l|}{Side view image input}                                                                       \\ \cline{2-7}
+                                & \multicolumn{1}{l|}{Mean}                   & \multicolumn{1}{l|}{Median}                & Std & \multicolumn{1}{l|}{Mean} & \multicolumn{1}{l|}{Median} & Std \\ \hline
+        DECA + neutral emotion  & \multicolumn{1}{l|}{}                       & \multicolumn{1}{l|}{}                      &     & \multicolumn{1}{l|}{}     & \multicolumn{1}{l|}{}       &     \\ \hline
+        DECA + detected emotion & \multicolumn{1}{l|}{}                       & \multicolumn{1}{l|}{}                      &     & \multicolumn{1}{l|}{}     & \multicolumn{1}{l|}{}       &     \\ \hline
+        DECA + our model        & \multicolumn{1}{l|}{}                       & \multicolumn{1}{l|}{}                      &     & \multicolumn{1}{l|}{}     & \multicolumn{1}{l|}{}       &     \\ \hline
     \end{tabularx}
     \label{loss_stats}
 \end{table}
