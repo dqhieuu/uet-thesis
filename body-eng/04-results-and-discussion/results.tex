@@ -40,8 +40,9 @@ LPIPS is a deep learning-based metric that employs a neural network to learn ima
 \subsubsection{Customizable emotions}
 To evaluate the quality of the customization of the facial emotions, we follow the method used in the NoW challenge.
 \subsubsubsection{Measurements: The NoW challenge}
-The NoW challenge provides a benchmark method specialized in face reconstruction comparison.
+The NoW challenge provides a benchmark method specialized in face reconstruction comparison. It uses a set of 7 landmark points to rigidly align the predicted mesh with the ground truth mesh. The landmark points are the leftmost and the rightmost points of the two eyes, the tip of the nose, the leftmost and the rightmost points of the mouth. The error is then calculated as the average Euclidean distance between the predicted and the ground truth landmarks. The error is normalized by the interocular distance of the ground truth mesh. The normalized error is then used to calculate the final score using the following formula:
 
+\includefigure[The area used for evaluation in the NoW challenge.]{images/now_dataset.png}
 
 \subsection{Experimental Results and Commentary}
 \subsubsection{Quantitative results}
