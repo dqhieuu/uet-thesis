@@ -18,7 +18,7 @@ To evaluate the system, we used face images generated from a StyleGAN \cite{karr
 
 \subsubsection{Customizable facial emotions}
 \subsubsubsection{Training}
-To train the emotion network, we use the VKIST dataset which consists of 889 images of 127 subjects with 7 captured emotions (neutral, anger, disgust, fear, happiness, sadness, surprise). All images are captured from the front view with a resolution of 2976x1984. 90\% of the images are used for training and 10\% for testing. From the dataset, we extract the face region and resize it to 256x256. We then use the pre-trained DECA model to extract the expression parameters from the face images. These expression parameters serve as the ground truth for the emotion model.
+To train the emotion network, we use the VKIST dataset which consists of 889 images of 127 subjects with 7 captured emotions (neutral, anger, disgust, fear, happiness, sadness, surprise). All images are captured from the front view with a resolution of $2976\times1984$. 90\% of the images are used for training and 10\% for testing. From the dataset, we extract the face region and resize it to 256x256. We then use the pre-trained DECA model to extract the expression parameters from the face images. These expression parameters serve as the ground truth for the emotion model.
 
 \subsubsubsection{Evaluation}
 To evaluate the emotion model, the FaceScape dataset, which consists of 847 subjects, is used. The dataset consists of scanned 3D face models of 20 different expressions, and 56 images corresponding to 56 camera angles. However, only the data of 359 subjects is used because the remaining subjects aren't provided with the captured images/expressions.
@@ -38,9 +38,10 @@ PSNR and SSIM are widely used non-deep learning methods that measure similarity 
 LPIPS is a deep learning-based metric that employs a neural network to learn image features and compute the similarity between two images based on these features.
 
 \subsubsection{Customizable emotions}
-To evaluate the quality of the customization of the facial emotions, we follow the method used in the NoW challenge.
+To evaluate the quality of the customization of the facial emotions, we follow the method used in the NoW challenge and compare the results of different method outputs with the ground truth. The ground truth is the scanned meshes of the FaceScape dataset, compared with the reconstructed face models.
+
 \subsubsubsection{Measurements: The NoW challenge}
-The NoW challenge provides a benchmark method specialized in face reconstruction comparison. It uses a set of 7 landmark points to rigidly align the predicted mesh with the ground truth mesh. The landmark points are the leftmost and the rightmost points of the two eyes, the tip of the nose, the leftmost and the rightmost points of the mouth. The error is then calculated as the average Euclidean distance between the predicted and the ground truth landmarks. The error is normalized by the interocular distance of the ground truth mesh. The normalized error is then used to calculate the final score using the following formula:
+The NoW challenge provides a benchmark method specialized in face reconstruction comparison. It uses a set of 7 landmark points to rigidly align the predicted mesh with the ground truth mesh. The landmark points are the leftmost and the rightmost points of the two eyes, the tip of the nose, the leftmost point, and the rightmost point of the mouth. The error is then calculated using the absolute distance between each scan vertex and the closest point in the mesh surface.
 
 \includefigure[The area used for evaluation in the NoW challenge.]{images/now_dataset.png}
 
