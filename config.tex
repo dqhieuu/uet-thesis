@@ -11,6 +11,12 @@
 \usepackage{csquotes}
 \setquotestyle{english}
 
+\addto\captionsenglish{
+  \renewcommand{\contentsname}%
+    {Table of contents}%
+  \renewcommand*{\acronymname}{Abbreviations}
+}
+
 
 % allows importing of latex files
 \usepackage{subfiles}
@@ -251,6 +257,12 @@
     }
 }
 
+\usepackage[automake]{glossaries-extra}
+\makeglossaries
+
+\setabbreviationstyle[acronym]{long-short}
+
+
 % \usepackage{hhline}
 % \usepackage{scrextend}
 
@@ -291,21 +303,6 @@
 % \usepackage{listings}
 
 % \usepackage{multicol}
-
-
-% \usepackage{glossaries}
-% \usepackage[automake]{glossaries-extra}
-% \makeglossaries
-% Automate the process
-
-% \newcommand*{\newglsen}[4]{%
-%     \newglossaryentry{#1}%
-%     {%
-%         name = {#2},%
-%         first = {\textbf{#2} (#3)},%
-%         description = {(#3) #4}%
-%     }%
-% }
 
 % \newcommand*{\newglslinked}[5]{%
 % \newglossaryentry{#1}%
