@@ -45,6 +45,9 @@ $PSNR = 10\cdot\log_{10}(\frac{MAX_I^2}{MSE})$
 
 where $MAX_{I}$ is the maximum possible pixel value of the image.
 
+The SSIM index is calculated on various windows of an image. The measure between two windows $x$ and $y$ of common size $N \times N$ is:
+
+
 \acrshort{lpips} \cite{zhangUnreasonableEffectivenessDeep2018} is a deep learning-based metric that employs a neural network to learn image features and compute the similarity between two images based on these features.
 
 \subsubsection{Customizable facial emotions}
