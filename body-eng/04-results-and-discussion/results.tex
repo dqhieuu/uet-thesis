@@ -35,7 +35,7 @@ The \acrshort{difd} evaluation method determines whether two portrait images bel
 \subsubsubsection{Measurements: \acrshort{psnr}, \acrshort{ssim}, \acrshort{lpips}}
 \acrshort{psnr} and \acrshort{ssim} are widely used non-deep learning methods that measure similarity based on specific image attributes and provide information about the similarity in terms of noise and structure.
 
-Given a noise-free m×n monochrome image I and its noisy approximation K, \acrshort{mse} is defined as:
+\textbf{PSNR:} Given a noise-free m×n monochrome image I and its noisy approximation K, \acrshort{mse} is defined as:
 
 \begin{equation}
     MSE = \frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}[I(i,j)-K(i,j)]^2
@@ -48,7 +48,7 @@ The \acrshort{psnr} is defined as
 \end{equation}
 where $MAX_{I}$ is the maximum possible pixel value of the image.
 
-The SSIM index is calculated on various windows of an image. The measure between two windows $x$ and $y$ of common size $N \times N$ is:
+\textbf{SSIM:} The SSIM index is calculated on various windows of an image. The measure between two windows $x$ and $y$ of common size $N \times N$ is:
 
 \begin{equation}
     SSIM(x,y) = \frac{(2\mu_x\mu_y + c_1)(2\sigma_{xy}+c_2)}{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}
@@ -57,7 +57,7 @@ The SSIM index is calculated on various windows of an image. The measure between
 where $\mu_x$ is the average of $x$, $\mu_y$ is the average of $y$, $\sigma_x^2$ is the variance of $x$, $\sigma_y^2$ is the variance of $y$, and $\sigma_{xy}$ is the covariance of $x$ and $y$. $c_1$ and $c_2$ are two variables to stabilize the division with a weak denominator.
 
 
-\acrshort{lpips} \cite{zhangUnreasonableEffectivenessDeep2018} is a deep learning-based metric that employs a neural network to learn image features and compute the similarity between two images based on these features.
+\textbf{LPIPS:} \acrshort{lpips} \cite{zhangUnreasonableEffectivenessDeep2018} is a deep learning-based metric that employs a neural network to learn image features and compute the similarity between two images based on these features.
 
 \subsubsection{Customizable facial emotions}
 To evaluate the quality of the customization of the facial emotions, we follow the method used in the NoW challenge and compare the results of different method outputs with the ground truth. The ground truth is the scanned meshes of the FaceScape dataset, compared with the reconstructed face models.
