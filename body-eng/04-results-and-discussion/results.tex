@@ -43,10 +43,9 @@ Given a noise-free m×n monochrome image I and its noisy approximation K, \acrsh
 
 The \acrshort{psnr} is defined as
 
-\[
+\begin{equation}
     PSNR = 10\cdot\log_{10}\left(\frac{MAX_I^2}{MSE}\right)
-\]
-
+\end{equation}
 where $MAX_{I}$ is the maximum possible pixel value of the image.
 
 The SSIM index is calculated on various windows of an image. The measure between two windows $x$ and $y$ of common size $N \times N$ is:
