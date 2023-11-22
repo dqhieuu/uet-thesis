@@ -5,13 +5,13 @@
 \subsection{Data Description}
 \subsubsection{For avatar reconstruction}
 \subsubsubsection{The FaceScape dataset}
-To evaluate the emotion model, we use the FaceScape dataset, which consists of 847 subjects, is used. The dataset consists of scanned 3D face models of 20 different expressions, and 56 images corresponding to 56 camera angles to create each of the scanned models. Only the data of 359 subjects is used because the remaining subjects aren't provided with the captured images/expressions, which makes it more difficult to evaluate the effectiveness of the method.
+To evaluate the emotion model, we used the FaceScape dataset, which consists of 847 subjects, is used. The dataset consists of scanned 3D face models of 20 different expressions, and 56 images corresponding to 56 camera angles to create each of the scanned models. Only the data of 359 subjects was used because the remaining subjects weren't provided with the captured images/expressions, which makes it more difficult to evaluate the effectiveness of the method.
 
 \subsubsubsection{The HairNet dataset}
-We use the public HairNet dataset \cite{zhouHairNetSingleViewHair2018} to train the hair reconstruction model. Using our generation method, we were able to create a dataset of roughly 30,000 images for training the hair reconstruction model from the database of 343 hair models.
+We used the public HairNet dataset \cite{zhouHairNetSingleViewHair2018} to train the hair reconstruction model. Using our generation method, we were able to create a dataset of roughly 30,000 images for training the hair reconstruction model from the database of 343 hair models.
 
 \subsubsubsection{The StyleGAN dataset}
-To evaluate the system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system.
+To evaluate the whole system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system.
 
 \subsubsection{For customizable facial emotions}
 \subsubsubsection{The VKIST dataset}
