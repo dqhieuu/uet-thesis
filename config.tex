@@ -12,9 +12,9 @@
 \setquotestyle{english}
 
 \addto\captionsenglish{
-  \renewcommand{\contentsname}%
+    \renewcommand{\contentsname}%
     {Table of contents}%
-  \renewcommand*{\acronymname}{Abbreviations}
+    \renewcommand*{\acronymname}{Abbreviations}
 }
 
 
@@ -146,16 +146,15 @@
     \end{figure}
 }
 
-\NewDocumentCommand{\includesmallfigure}{O{} m}{
-    \begin{figure}[H]
-        \setlength{\abovecaptionskip}{15pt plus 3pt minus 2pt}
+\NewDocumentCommand{\includesidewaysfigure}{O{} m O{0.9}}{
+    \begin{sidewaysfigure}
         \centering
         \vspace{1cm}
         \captionsetup{font=bf}
-        \includegraphics[width=0.6\textwidth,height=0.6\textheight,keepaspectratio]{#2}
+        \includegraphics[width=#3\textwidth]{#2}
         \IfValueT{#1}{\caption{#1}}
         \label{fig:#2}
-    \end{figure}
+    \end{sidewaysfigure}
 }
 
 \NewDocumentCommand{\includesvgfigure}{O{} m}{
