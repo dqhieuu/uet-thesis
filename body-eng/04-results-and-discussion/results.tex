@@ -10,8 +10,12 @@ To evaluate the emotion model, we used the FaceScape dataset, which consists of 
 \subsubsubsection{The HairNet dataset}
 We used the public HairNet dataset \cite{zhouHairNetSingleViewHair2018} to train the hair reconstruction model. Using our generation method, we were able to create a dataset of roughly 30,000 images for training the hair reconstruction model from the database of 343 hair models.
 
+
+
 \subsubsubsection{The StyleGAN dataset}
-To evaluate the whole system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system.
+To evaluate the whole system, we used face images generated from a StyleGAN \cite{karrasStyleBasedGeneratorArchitecture2019} model. These images are diverse in ethnicity, gender, age, and other attributes, making them suitable for evaluating the realism and accuracy of our system. Online tools such as \url{https://thispersondoesnotexist.com/} can be used to generate these images.
+
+\includefigure[Sample images in the StyleGAN dataset.]{images/thispersondoesnotexist.jpg}[1.0]
 
 \subsubsection{For customizable facial emotions}
 \subsubsubsection{The VKIST dataset}
