@@ -1,9 +1,9 @@
 \newgeometry{left=4.0cm,right=3cm,bottom=3cm,top=3cm}
-    \subfile{1-cover.tex}
-    \clearpage
-    
-    \subfile{2-subcover.tex}
-    \clearpage
+\subfile{1-cover.tex}
+\clearpage
+
+\subfile{2-subcover.tex}
+\clearpage
 \restoregeometry
 
 \subfile{3-authorship.tex}
@@ -18,13 +18,13 @@
 \hypersetup{linkcolor=black}\tableofcontents
 \clearpage
 
-\addcontentsline{toc}{section}{\listfigurename}
+% \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
 \clearpage
 
-\addcontentsline{toc}{section}{\listtablename}
+% \addcontentsline{toc}{section}{\listtablename}
 \listoftables
 \clearpage
 
-\printglossary[type=\acronymtype,nonumberlist,title=Abbreviations]
+\printnoidxglossaries[type=\acronymtype,nonumberlist,title=Abbreviations]
 \clearpage
