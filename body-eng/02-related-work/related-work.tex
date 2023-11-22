@@ -41,9 +41,9 @@ The 3D face model is then rendered to form the 2D face image. The 2D face image 
 
 \subsubsection{MICA}
 
-MICA \cite{zielonkaMetricalReconstructionHuman2022} is a method to reconstruct 3D face models from a single-view image, which also uses FLAME as a component in the process of reconstructing the 3D model. However, unlike DECA, MICA only reconstructs the 3D face model with the shape parameters ($\beta$) and does not reconstruct the expression parameters as well as the texture. Which also means that MICA does not reconstruct the facial expression.
+MICA \cite{zielonkaMetricalReconstructionHuman2022} is a method to reconstruct 3D face models from a single-view image, which also uses FLAME as a component in the process of reconstructing the 3D model. However, unlike DECA, MICA only reconstructs the 3D face model with the shape parameters ($\beta$) and does not reconstruct the facial expression as well as the texture.
 
-MICA uses a different approach to reconstruct the shape parameters to DECA. MICA bases its network on the ArcFace architecture \cite{dengSubcenterArcFaceBoosting2020}
+MICA uses a different approach to reconstruct the shape parameters to DECA. MICA bases its network on the ArcFace architecture \cite{dengSubcenterArcFaceBoosting2020} and refines the last 3 ResNet blocks of the architecture. This results in a more accurate reconstruction of the shape parameters compared to DECA, as shown in the NoW benchmark \cite{RingNet:CVPR:2019}.
 
 \includefigure[MICA architecture.]{images/mica_architecture.png}
 
@@ -61,6 +61,8 @@ Hairnet \cite{zhouHairNetSingleViewHair2018} was the pioneering deep learning-ba
 
 \subsubsection{Overview}
 
-Using FLAME, the input parameters are grouped into shape parameters, expression parameters, and pose parameters. To change the facial expression, one would apply changes to FLAME expression parameters and pose parameters. However, these expression parameters are non-descriptive and are too many which can make the system users confused. Therefore, more simple and descriptive parameters are needed for representing basic human emotions.
+Using the FLAME model, the input parameters are grouped into shape parameters, expression parameters, and pose parameters. To change the facial expression, one would apply changes to FLAME expression parameters and pose parameters. However, these expression parameters are non-descriptive and are too many which can make the users confused. Therefore, more simple and descriptive parameters are needed for representing basic human emotions.
 
-Based on the common need for customizing facial emotion, a set of 6 basic emotions $S_e$, which are ``happiness'', ``anger'', ``sadness'', ``fear'', ``contempt'', ``surprise'' is implemented as parameters in the system. These emotions are defined in the Arousal-Valence Model and are common for usage. The parameters responsible for dictating the facial expression in FLAME are expression parameters and pose parameters. In order to map these emotions to FLAME parameters, given that FLAME parameters mostly use linear morphing, one idea is to use a basic multi-layer perceptron architecture. The model implementing this should take the intensity of these emotions in the range of $[0,1]$ and return the corresponding FLAME parameters that are used for emotions.
+Based on the common need for customizing facial emotion, a set of 6 basic emotions $S_e=\{ happiness, anger, sadness, fear, contempt, surprise\}$. These emotions are defined in the Arousal-Valence Model and are common for basic usage. 
+
+The parameters responsible for dictating the facial expression in FLAME are expression parameters and pose parameters. In order to map these emotions to FLAME parameters, given that FLAME parameters mostly use linear morphing, one idea is to use a basic multi-layer perceptron architecture. The model implementing this should take the intensity of these emotions in the range of $[0,1]$ and return the corresponding FLAME parameters that are used for emotions.
