@@ -55,7 +55,7 @@ The SSIM index is calculated on various windows of an image. The measure between
     SSIM(x,y) = \frac{(2\mu_x\mu_y + c_1)(2\sigma_{xy}+c_2)}{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}
 \end{equation}
 
-where $\mu_x$ is the average of $x$, $\mu_y$ is the average of $y$, $\sigma_x^2$ is the variance of $x$, $\sigma_y^2$ is the variance of $y$, and $\sigma_{xy}$ is the covariance of $x$ and $y$. $c_1$ and $c_2$ are constants to stabilize the division with weak denominator.
+where $\mu_x$ is the average of $x$, $\mu_y$ is the average of $y$, $\sigma_x^2$ is the variance of $x$, $\sigma_y^2$ is the variance of $y$, and $\sigma_{xy}$ is the covariance of $x$ and $y$. $c_1$ and $c_2$ are two variables to stabilize the division with a weak denominator.
 
 
 \acrshort{lpips} \cite{zhangUnreasonableEffectivenessDeep2018} is a deep learning-based metric that employs a neural network to learn image features and compute the similarity between two images based on these features.
