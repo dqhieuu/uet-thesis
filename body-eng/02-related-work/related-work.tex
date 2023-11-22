@@ -26,7 +26,7 @@ DECA \cite{fengLearningAnimatableDetailed2021} is a method to reconstruct 3D fac
 
 \includefigure[DECA architecture, using FLAME as part of the pipeline]{images/deca_architecture.png}[1.0]
 
-Given an input image, FLAME encoders outputs the FLAME parameters, including shape parameters ($\beta$), expression parameters ($\psi$), and pose parameters ($\theta$). The shape parameters are used to reconstruct the 3D face shape. The expression parameters are used to reconstruct the 3D face expression. The pose parameters are used to reconstruct the 3D face pose. The 3D face shape, expression, and pose are then combined to form the 3D face model. The 3D face model is then rendered to form the 2D face image. The 2D face image is then compared with the input image to calculate the loss. The loss is then used to update the FLAME parameters. The FLAME parameters are then used to reconstruct the 3D face model. The process is repeated until the loss is minimized.
+Given an input image, DECA encoders output the FLAME parameters, including shape parameters ($\beta$), expression parameters ($\psi$), and pose parameters ($\theta$), and the detail . The shape parameters are used to reconstruct the 3D face shape. The expression parameters are used to reconstruct the 3D face expression. The pose parameters are used to reconstruct the 3D face pose. The 3D face shape, expression, and pose are then combined to form the 3D face model. The 3D face model is then rendered to form the 2D face image. The 2D face image is then compared with the input image to calculate the loss. The loss is then used to update the FLAME parameters. The FLAME parameters are then used to reconstruct the 3D face model. The process is repeated until the loss is minimized.
 
 \subsubsection{MICA}
 
