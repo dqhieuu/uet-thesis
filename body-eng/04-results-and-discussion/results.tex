@@ -37,11 +37,15 @@ The \acrshort{difd} evaluation method determines whether two portrait images bel
 
 Given a noise-free m×n monochrome image I and its noisy approximation K, \acrshort{mse} is defined as:
 
-$MSE = \frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}[I(i,j)-K(i,j)]^2$
+\begin{equation}
+    MSE = \frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}[I(i,j)-K(i,j)]^2
+\end{equation}
 
 The \acrshort{psnr} is defined as
 
-$PSNR = 10\cdot\log_{10}(\frac{MAX_I^2}{MSE})$
+\[
+PSNR = 10\cdot\log_{10}\left(\frac{MAX_I^2}{MSE}\right)
+\]
 
 where $MAX_{I}$ is the maximum possible pixel value of the image.
 
