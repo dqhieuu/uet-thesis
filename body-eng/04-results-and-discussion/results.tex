@@ -84,14 +84,14 @@ We use the FaceScape scanned mesh dataset as the ground truth for the evaluation
     \centering
     \captionsetup{font=bf}
     \caption{Comparison of our emotion model with others}
-    \begin{tabularx}{\linewidth}{|X|XXX|XXX|}
+    \begin{tabular}{|l|ccc|ccc|}
         \hline
-        \multirow{2}{*}{Method} & \multicolumn{3}{l|}{Front-view image input} & \multicolumn{3}{l|}{Side-view image input}                                                                       \\ \cline{2-7}
-                                & \multicolumn{1}{l|}{Mean}                   & \multicolumn{1}{l|}{Median}                & Std & \multicolumn{1}{l|}{Mean} & \multicolumn{1}{l|}{Median} & Std \\ \hline
-        DECA + neutral emotion  & \multicolumn{1}{l|}{}                       & \multicolumn{1}{l|}{}                      &     & \multicolumn{1}{l|}{}     & \multicolumn{1}{l|}{}       &     \\ \hline
-        DECA + detected emotion & \multicolumn{1}{l|}{}                       & \multicolumn{1}{l|}{}                      &     & \multicolumn{1}{l|}{}     & \multicolumn{1}{l|}{}       &     \\ \hline
-        DECA + our model        & \multicolumn{1}{l|}{}                       & \multicolumn{1}{l|}{}                      &     & \multicolumn{1}{l|}{}     & \multicolumn{1}{l|}{}       &     \\ \hline
-    \end{tabularx}
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Method}}} & \multicolumn{3}{c|}{\textbf{Front view image input}} & \multicolumn{3}{c|}{\textbf{Side view image input}}                                                                                                           \\ \cline{2-7}
+        \multicolumn{1}{|c|}{}                                 & \multicolumn{1}{c|}{\textbf{Mean}}                   & \multicolumn{1}{c|}{\textbf{Median}}                & \textbf{Std} & \multicolumn{1}{c|}{\textbf{Mean}} & \multicolumn{1}{c|}{\textbf{Median}} & \textbf{Std} \\ \hline
+        \textbf{DECA + neutral emotion}                        & \multicolumn{1}{c|}{}                                & \multicolumn{1}{c|}{}                               &              & \multicolumn{1}{c|}{}              & \multicolumn{1}{c|}{}                &              \\ \hline
+        \textbf{DECA + detected emotion}                       & \multicolumn{1}{c|}{}                                & \multicolumn{1}{c|}{}                               &              & \multicolumn{1}{c|}{}              & \multicolumn{1}{c|}{}                &              \\ \hline
+        \textbf{DECA + our model}                              & \multicolumn{1}{c|}{}                                & \multicolumn{1}{c|}{}                               &              & \multicolumn{1}{c|}{}              & \multicolumn{1}{c|}{}                &              \\ \hline
+    \end{tabular}
     \label{now_results}
 \end{table}
 
