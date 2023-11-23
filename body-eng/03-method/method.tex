@@ -107,7 +107,7 @@ The details of each reconstruction block will be explained in detail in the sect
 \subsubsection{Flow for use case: Create 3D avatar from a portrait image}
 For taking a single-view portrait image as input, the system provides a front-end interface, i.e. a web page, where the user can upload their image. The front-end interface allows the user to send the image to a gateway server, which is responsible for handling the user's requests and sending the image to the back-end server for processing. By using a gateway server, the system architecture can be modularized, which means multiple reconstruction backends can be used as substitutions. A gateway also allows the system to easily scale up to handle a large number of requests by adding more back-end servers.
 
-The back-end server is responsible for reconstruction tasks and algorithmic tasks. To be able to create a 3D avatar from a single-view portrait image, the system needs to be able to reconstruct the 3D face model from the input image. The system uses a pre-trained DECA model and can be substituted by a pre-trained MICA model \cite{zielonkaMetricalReconstructionHuman2022} to reconstruct the 3D face model.
+The back-end server is responsible for reconstruction tasks and algorithmic tasks. To be able to create a 3D avatar from a single-view portrait image, the system needs to be able to reconstruct the 3D face model from the input image. The system uses a pre-trained DECA model to reconstruct the 3D face shape, expression, and texture. DECA can be combined or substituted by the pre-trained MICA model \cite{zielonkaMetricalReconstructionHuman2022} to reconstruct the 3D face shape using an alternative method. The algorithmic details of DECA and MICA will be explained in the next section \ref{sec:method/face-reconstruction}.
 
 The implemented flow for creating a 3D avatar from a single-view portrait image is shown in the figure below.
 
@@ -237,6 +237,7 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
 
 
 \subsubsection{Face reconstruction}
+\label{sec:method/face-reconstruction}
 
 To generate the 3D head, we used the combination of DECA \cite{fengLearningAnimatableDetailed2021} and MICA \cite{zielonkaMetricalReconstructionHuman2022}. DECA takes a single input image and estimates the parameters for the FLAME model, which are identity's shape ($\beta$), head pose ($\theta$), and expression ($\psi$), which then outputs a mesh of 5023 vertices. At the time of creating DECA, FLAME didn't have an albedo model for the reconstruction of skin texture, therefore DECA used Basel Face Model's albedo space for texture reconstruction. Since then, there have been works that make it possible to construct FLAME texture space \cite{fengPhotometricFLAMEFitting2023,smithMorphableFaceAlbedo2020}. While it is possible to use DECA for the identity's shape ($\beta$) parameters, we decided to use MICA for the fitting of the shape parameters as MICA can reconstruct these parameters with metrical accuracy and produces generally better results, as demonstrated in the NoW Challenge \cite{RingNet:CVPR:2019} benchmarks.
 
