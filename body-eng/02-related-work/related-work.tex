@@ -25,11 +25,11 @@ DECA \cite{fengLearningAnimatableDetailed2021} is a method to reconstruct 3D fac
 
 Given an input image, DECA encoders output
 \begin{itemize}
-  \item FLAME parameters including: shape parameters ($\beta$), expression parameters ($\psi$), pose parameters ($\theta$)
-  \item Detail parameters ($\delta $)
-  \item Albedo parameters ($\alpha$)
-  \item Camera parameters ($C$)
-  \item Light parameters ($l$)
+    \item FLAME parameters including: shape parameters ($\beta$), expression parameters ($\psi$), pose parameters ($\theta$)
+    \item Detail parameters ($\delta $)
+    \item Albedo parameters ($\alpha$)
+    \item Camera parameters ($C$)
+    \item Light parameters ($l$)
 \end{itemize}
 
 The FLAME parameters are used to construct the FLAME 3D mesh, in which the shape parameters define the invariant mesh identity, whereas the expression parameters and pose parameters define the variant mesh expression and pose. The detail parameters are used to reconstruct the high-frequency details of the face. The albedo parameters are used to reconstruct the face texture. The camera parameters are used to reconstruct the camera pose. The light parameters are used to reconstruct the lighting conditions.
@@ -45,7 +45,7 @@ MICA uses a different approach to reconstruct the shape parameters compared to D
 \includefigure[MICA architecture.]{images/mica_architecture.png}
 
 \subsubsection{3D hair reconstruction}
-Representing hair structure in a three-dimensional environment is a complex task \cite{hairsurvey}. Several studies, such as \cite{retina,facegcn,pifu,3dhmr} represent hair as a mesh. While this representation serves specific purposes, it still poses various limitations such as refinement, animation, rendering, and so on.
+Representing hair structure in a three-dimensional environment is a complex task \cite{hairsurvey}. Several studies, such as \cite{deng,facegcn,pifu,3dhmr} represent hair as a mesh. While this representation serves specific purposes, it still poses various limitations such as refinement, animation, rendering, and so on.
 Other techniques have been developed for higher-quality 3D hair modeling \cite{hairsurvey}. These include clustering hair into fiber groups and representing it as cylinders \cite{cluster} or modeling each hair strand individually \cite{hairsurvey}. Modeling each hair strand fulfills requirements for practical applications.
 The latest research focused on hair modeling from images \cite{imgbasesurvey}. This includes techniques for creating a 3D hair model from multiple images \cite{multihair1}, as well as from a single image \cite{hairimg1,hairimg2,hairimg4}.
 
