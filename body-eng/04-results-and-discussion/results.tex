@@ -77,7 +77,7 @@ To evaluate the quality of the customization of the facial emotions, we follow t
 \subsubsubsection{Measurements: The NoW challenge}
 The NoW (Not quite in-the-Wild) challenge \cite{RingNet:CVPR:2019} provides a benchmark method specialized in measuring the accuracy and robustness of 3D face reconstruction methods. It takes 4 inputs: the ground truth mesh, the predicted mesh, the ground truth landmark points, and the predicted landmark points.
 
-It uses a set of 7 landmark points to rigidly align the predicted mesh with the ground truth mesh. The landmark points are the leftmost and the rightmost points of the two eyes, the tip of the nose, the leftmost point, and the rightmost point of the mouth. The error is then calculated using the absolute distance between each scan vertex and the closest point in the mesh surface.
+It uses a set of 7 landmark points to rigidly align the predicted mesh with the ground truth mesh. The landmark points are the leftmost and the rightmost points of the two eyes, the tip of the nose, the leftmost point, and the rightmost point of the mouth. The error is then calculated using the absolute distance between each scan vertex and the closest point in the mesh surface. The error is outputted as a vector of error values, in milliter units, for each vertex in the mesh. The average, median, and standard deviation of the error vector are then calculated and outputted as the final result.
 
 \includefigure[The area used for evaluation in the NoW challenge.]{images/now_dataset.png}
 
