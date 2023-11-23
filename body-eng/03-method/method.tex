@@ -104,7 +104,7 @@ The system holds a database for hairstyles, which is convenient for try-on purpo
 
 The details of each reconstruction block will be explained in detail in the sections below, where the double-bordered blocks are the blocks that are novel and implemented in this thesis.
 
-\subsubsection{Flow for use case: Create 3D avatar from a portrait image}
+\subsubsection{Use case: Create 3D avatar from a portrait image}
 For taking a single-view portrait image as input, the system provides a front-end interface, i.e. a web page, where the user can upload their image. The front-end interface allows the user to send the image to a gateway server, which is responsible for handling the user's requests and sending the image to the back-end server for processing. By using a gateway server, the system architecture can be modularized, which means multiple reconstruction backends can be used as substitutions. A gateway also allows the system to easily scale up to handle a large number of requests by adding more back-end servers.
 
 The back-end server is responsible for reconstruction tasks and algorithmic tasks. To be able to create a 3D avatar from a single-view portrait image, the system needs to be able to reconstruct the 3D face model from the input image. The system uses a pre-trained DECA model to reconstruct the 3D face shape, expression, and texture. DECA can be combined or substituted by the pre-trained MICA model \cite{zielonkaMetricalReconstructionHuman2022} to reconstruct the 3D face shape using an alternative method. The algorithmic details of DECA and MICA will be explained in the next section \ref{sec:method/face-reconstruction}.
@@ -198,7 +198,7 @@ By aligning the hair model with the already aligned head model, the problem of H
 
 
 
-\subsubsection{Flow for use case: Create 3D avatar with customized emotions}
+\subsubsection{Use case: Create 3D avatar with customized emotions}
 The system allows the user to customize the 3D avatar's emotion by using sliders to adjust the intensity of a set of emotions. The system uses a simple emotion-to-FLAME regressive model to convert the emotion parameters to FLAME's pose and expression parameters. The emotion-to-FLAME regressive model is trained on the VKIST dataset, with the ground truth acquired by running the dataset through the pre-trained face reconstruction model (DECA, MICA). The implemented flow for creating a 3D avatar with customized emotions is shown in the figure below.
 
 \clearpage
@@ -237,7 +237,7 @@ The system allows the user to customize the 3D avatar's emotion by using sliders
 
 \clearpage
 
-\subsubsection{Flow for use case: Try on different hairstyles with 3D avatar}
+\subsubsection{Use case: Try on different hairstyles with 3D avatar}
 
 The system allows the user to try on different hairstyles with the 3D avatar. The system uses a pre-trained image-to-hair model to reconstruct the user's hairstyle from the input image. If the user chooses to try on different hairstyles, the system will not use the user's hairstyle from the input image. Instead, the system will use one of the hairstyles in the database. The user can choose to download the 3D avatar with the hairstyle as a zip file, which contains the 3D avatar model, the texture map, and the hairstyle model. The implemented flow for trying on different hairstyles with the 3D avatar is shown in the figure below.
 
