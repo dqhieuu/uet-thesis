@@ -236,8 +236,7 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
 \subsection{System architecture and algorithm details}
 
 
-\subsubsection{Face reconstruction}
-\label{sec:method/face-reconstruction}
+\subsubsection{Face reconstruction}\label{sec:method/face-reconstruction}
 
 To generate the 3D head, we used the combination of DECA \cite{fengLearningAnimatableDetailed2021} and MICA \cite{zielonkaMetricalReconstructionHuman2022}. DECA takes a single input image and estimates the parameters for the FLAME model, which are identity's shape ($\beta$), head pose ($\theta$), and expression ($\psi$), which then outputs a mesh of 5023 vertices. At the time of creating DECA, FLAME didn't have an albedo model for the reconstruction of skin texture, therefore DECA used Basel Face Model's albedo space for texture reconstruction. Since then, there have been works that make it possible to construct FLAME texture space \cite{fengPhotometricFLAMEFitting2023,smithMorphableFaceAlbedo2020}. While it is possible to use DECA for the identity's shape ($\beta$) parameters, we decided to use MICA for the fitting of the shape parameters as MICA can reconstruct these parameters with metrical accuracy and produces generally better results, as demonstrated in the NoW Challenge \cite{RingNet:CVPR:2019} benchmarks.
 
