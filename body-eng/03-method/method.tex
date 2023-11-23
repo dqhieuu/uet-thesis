@@ -88,7 +88,7 @@ This use case is an extension of the main use case. The user can choose to try o
     @enduml
 \end{umlfigure}
 
-\subsection{System architecture overview}
+\subsection{System architecture}
 
 \subsubsection{Overall flow}
 
@@ -145,6 +145,58 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
 \end{umlfigure}
 
 \clearpage
+
+\subsubsubsection{Face reconstruction}\label{sec:method/face-reconstruction}
+
+To generate the 3D head, we used the combination of DECA \cite{fengLearningAnimatableDetailed2021} and MICA \cite{zielonkaMetricalReconstructionHuman2022}. DECA takes a single input image and estimates the parameters for the FLAME model, which are identity's shape ($\beta$), head pose ($\theta$), and expression ($\psi$), which then outputs a mesh of 5023 vertices. At the time of creating DECA, FLAME didn't have an albedo model for the reconstruction of skin texture, therefore DECA used Basel Face Model's albedo space for texture reconstruction. Since then, there have been works that make it possible to construct FLAME texture space \cite{fengPhotometricFLAMEFitting2023,smithMorphableFaceAlbedo2020}. While it is possible to use DECA for the identity's shape ($\beta$) parameters, we decided to use MICA for the fitting of the shape parameters as MICA can reconstruct these parameters with metrical accuracy and produces generally better results, as demonstrated in the NoW Challenge \cite{RingNet:CVPR:2019} benchmarks.
+
+\subsubsubsection{Face and hair alignment}
+To make our system a fully automated avatar reconstruction system, the hair model and face model need to be automatically aligned with each other. To achieve this, we propose an automated procedure for aligning the hair model with the face model.
+First, we define the anchor point of the hair object and the head object (Fig \ref{fig:images/head_hair_sampled.png}) as the highest point of the mesh and the center of the mesh, respectively, from the top view.
+
+For the head mesh $M_{head}=\{p_1,\ p_2,...,\ p_N\}$, we sample 5\% of the points with the highest z-axis values to create the set $M_{head\_5\%}$. For the hair mesh $M_{hair}$, for every hair strand, we sample 5\% of the points that start from the strand root to create the set $M_{hair\_5\%}$. We find that 5\% is enough to sample the points that form the head top, which can be used to approximate the center of the head and the hair accurately.
+
+\includefigure[Sampled points in hair and head models to calculate the anchor points.]{images/head_hair_sampled.png}
+
+We then calculate the hair anchor point $A_{hair}$ and the head anchor point $A_{head}$ by taking the means of the x-axis and the y-axis and the highest value of the z-axis.
+
+\begin{equation}
+    A = \begin{pmatrix}
+        x_{mean\_5\%} \\
+        y_{mean\_5\%} \\
+        z_{max\_5\%}
+    \end{pmatrix}
+    = \begin{pmatrix}
+        \frac{x_{p1}+x_{p2}+...+x_{pN5\%}}{0.05N} \\
+        \frac{y_{p1}+y_{p2}+...+y_{pN5\%}}{0.05N} \\
+        \max(z_{p1},z_{p2},...,y_{pN_{5\%}})
+    \end{pmatrix}
+\end{equation}
+
+With the hair anchor and the head anchor, the translation vector $T_{hair}$ (Fig \ref{fig:images/hair_translation.png}) is calculated by taking the subtraction of the 2 anchor points and adding it by a constant calibration value $C$.
+
+\begin{equation}
+    T_{hair} = A_{hair} - A_{head} + C
+\end{equation}
+
+For the scaling adjustment, first, I find the axis-aligned bounding boxes of the hair model and the head model. An assumption is made, which is the head model and the hair model are front-facing, as per the requirement of the captured image. Thus, the front-view lengths of the hair and the head can be deduced by taking the x-axis lengths. With the hair and the head length, the scaling coefficient can be calculated by taking the ratio of the hair length to the head length and can be adjusted with the addition constant $C$.
+
+\begin{equation}
+    S_{hair} = \frac{W_{hair}}{W_{head}} + C
+\end{equation}
+
+The final adjustment formula can be calculated with the translation vector $T_{hair}$ and the scaling coefficient $S_{hair}$
+
+\begin{equation}
+    p_{new} = \frac{1}{S_{hair}}\cdot(p_{old} + T_{hair})
+\end{equation}
+
+By aligning the hair model with the already aligned head model, the problem of HairNet being unable to align with the captured image as mentioned in Xu et al.'s paper \cite{xuDeep3DPortrait2020} is addressed.
+
+
+\includefigure[The alignment of the hair model with the head model by translation.]{images/hair_translation.png}
+
+
 
 \subsubsection{Flow for use case: Create 3D avatar with customized emotions}
 The system allows the user to customize the 3D avatar's emotion by using sliders to adjust the intensity of a set of emotions. The system uses a simple emotion-to-FLAME regressive model to convert the emotion parameters to FLAME's pose and expression parameters. The emotion-to-FLAME regressive model is trained on the VKIST dataset, with the ground truth acquired by running the dataset through the pre-trained face reconstruction model (DECA, MICA). The implemented flow for creating a 3D avatar with customized emotions is shown in the figure below.
@@ -233,65 +285,11 @@ The system allows the user to try on different hairstyles with the 3D avatar. Th
 
 \clearpage
 
-\subsection{System architecture and algorithm details}
-
-
-\subsubsection{Face reconstruction}\label{sec:method/face-reconstruction}
-
-To generate the 3D head, we used the combination of DECA \cite{fengLearningAnimatableDetailed2021} and MICA \cite{zielonkaMetricalReconstructionHuman2022}. DECA takes a single input image and estimates the parameters for the FLAME model, which are identity's shape ($\beta$), head pose ($\theta$), and expression ($\psi$), which then outputs a mesh of 5023 vertices. At the time of creating DECA, FLAME didn't have an albedo model for the reconstruction of skin texture, therefore DECA used Basel Face Model's albedo space for texture reconstruction. Since then, there have been works that make it possible to construct FLAME texture space \cite{fengPhotometricFLAMEFitting2023,smithMorphableFaceAlbedo2020}. While it is possible to use DECA for the identity's shape ($\beta$) parameters, we decided to use MICA for the fitting of the shape parameters as MICA can reconstruct these parameters with metrical accuracy and produces generally better results, as demonstrated in the NoW Challenge \cite{RingNet:CVPR:2019} benchmarks.
-
-
-\subsubsection{Hair reconstruction and using hairstyles from the database}
+\subsubsubsection{Hair reconstruction and using hairstyles from the database}
 
 For 3D hairstyle reconstruction from a captured image, we employed the pipeline introduced in HairNet, which consists of data collection and processing, data augmentation, training data generation, and deep learning model construction. We made slight modifications to the data augmentation step to achieve better results for our specific application. During the model construction step, we utilized the improved model by Anh-Duc et al. \cite{loThreeDimensionalHairStructure2023}, which is based on the model introduced in HairNet. We followed a similar approach to HairNet, used $343$ models from open sources, and aligned all the models with the same head, using individual strand representations. Each hairstyle consisted of $32\times32$ fixed hair strands on the scalp grid, with each hair strand being a discrete representation of $100$ points in three-dimensional space. We classified and mixed the hair dataset, resulting in a total of $2000$ hairstyles. Unlike HairNet, which used large rotation angles, we used narrower rotation angles ranging from $-30$ to $30$ degrees as our application primarily consists of front-facing images. For each hairstyle, we used three different shooting angles, which varied between distinct hairstyles.
 
 Similar to Anh-Duc et al. \cite{loThreeDimensionalHairStructure2023}, we added several layers to the VAE model of HairNet. In the encoder, we used residual blocks to enhance the effectiveness of working with large-size input images and multiple deep convolutional layers. We also incorporated batch normalization layers to accelerate the training speed of the model. In the final decoder step, we utilized a Conv3D block, and we added a parameter for future curliness adjustments if necessary, similar to HairNet and Anh-Duc et al. \cite{loThreeDimensionalHairStructure2023}. The effectiveness of these layers compared to the HairNet model is presented in the research by Anh-Duc et al. \cite{loThreeDimensionalHairStructure2023}. With the hair reconstruction module, our model takes in a $3 \times 256 \times 256$ image and returns a 3D hairstyle with a shape of $32 \times 32 \times 100 \times 4$.
-
-\subsubsection{Face and hair alignment}
-To make our system a fully automated avatar reconstruction system, the hair model and face model need to be automatically aligned with each other. To achieve this, we propose an automated procedure for aligning the hair model with the face model.
-First, we define the anchor point of the hair object and the head object (Fig \ref{fig:images/head_hair_sampled.png}) as the highest point of the mesh and the center of the mesh, respectively, from the top view.
-
-For the head mesh $M_{head}=\{p_1,\ p_2,...,\ p_N\}$, we sample 5\% of the points with the highest z-axis values to create the set $M_{head\_5\%}$. For the hair mesh $M_{hair}$, for every hair strand, we sample 5\% of the points that start from the strand root to create the set $M_{hair\_5\%}$. We find that 5\% is enough to sample the points that form the head top, which can be used to approximate the center of the head and the hair accurately.
-
-\includefigure[Sampled points in hair and head models to calculate the anchor points.]{images/head_hair_sampled.png}
-
-We then calculate the hair anchor point $A_{hair}$ and the head anchor point $A_{head}$ by taking the means of the x-axis and the y-axis and the highest value of the z-axis.
-
-\begin{equation}
-    A = \begin{pmatrix}
-        x_{mean\_5\%} \\
-        y_{mean\_5\%} \\
-        z_{max\_5\%}
-    \end{pmatrix}
-    = \begin{pmatrix}
-        \frac{x_{p1}+x_{p2}+...+x_{pN5\%}}{0.05N} \\
-        \frac{y_{p1}+y_{p2}+...+y_{pN5\%}}{0.05N} \\
-        \max(z_{p1},z_{p2},...,y_{pN_{5\%}})
-    \end{pmatrix}
-\end{equation}
-
-With the hair anchor and the head anchor, the translation vector $T_{hair}$ (Fig \ref{fig:images/hair_translation.png}) is calculated by taking the subtraction of the 2 anchor points and adding it by a constant calibration value $C$.
-
-\begin{equation}
-    T_{hair} = A_{hair} - A_{head} + C
-\end{equation}
-
-For the scaling adjustment, first, I find the axis-aligned bounding boxes of the hair model and the head model. An assumption is made, which is the head model and the hair model are front-facing, as per the requirement of the captured image. Thus, the front-view lengths of the hair and the head can be deduced by taking the x-axis lengths. With the hair and the head length, the scaling coefficient can be calculated by taking the ratio of the hair length to the head length and can be adjusted with the addition constant $C$.
-
-\begin{equation}
-    S_{hair} = \frac{W_{hair}}{W_{head}} + C
-\end{equation}
-
-The final adjustment formula can be calculated with the translation vector $T_{hair}$ and the scaling coefficient $S_{hair}$
-
-\begin{equation}
-    p_{new} = \frac{1}{S_{hair}}\cdot(p_{old} + T_{hair})
-\end{equation}
-
-By aligning the hair model with the already aligned head model, the problem of HairNet being unable to align with the captured image as mentioned in Xu et al.'s paper \cite{xuDeep3DPortrait2020} is addressed.
-
-
-\includefigure[The alignment of the hair model with the head model by translation.]{images/hair_translation.png}
 
 \subsection{Contribution: Customizable facial emotions}
 
