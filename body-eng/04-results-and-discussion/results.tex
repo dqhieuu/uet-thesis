@@ -68,12 +68,12 @@ where $\mu_x$ is the average of $x$, $\mu_y$ is the average of $y$, $\sigma_x^2$
 \subsubsection{Customizable facial emotions}
 To evaluate the quality of the customization of the facial emotions, we follow the method used in the NoW challenge and compare the results of different method outputs with the ground truth. The ground truth is the scanned meshes of the FaceScape dataset, compared with the reconstructed face models.
 
-\subsubsubsection{Measurements: The \acrshort{now} challenge}
-The \acrshort{now} challenge \cite{RingNet:CVPR:2019} provides a benchmark method specialized in measuring the accuracy and robustness of 3D face reconstruction methods. It takes 4 inputs: the ground truth mesh, the predicted mesh, the ground truth landmark points, and the predicted landmark points.
+\subsubsubsection{Measurements: The NoW challenge}
+The NoW (Not quite in-the-Wild) challenge \cite{RingNet:CVPR:2019} provides a benchmark method specialized in measuring the accuracy and robustness of 3D face reconstruction methods. It takes 4 inputs: the ground truth mesh, the predicted mesh, the ground truth landmark points, and the predicted landmark points.
 
 It uses a set of 7 landmark points to rigidly align the predicted mesh with the ground truth mesh. The landmark points are the leftmost and the rightmost points of the two eyes, the tip of the nose, the leftmost point, and the rightmost point of the mouth. The error is then calculated using the absolute distance between each scan vertex and the closest point in the mesh surface.
 
-\includefigure[The area used for evaluation in the \acrshort{now} challenge.]{images/now_dataset.png}
+\includefigure[The area used for evaluation in the NoW challenge.]{images/now_dataset.png}
 
 \subsection{Experimental Results and Commentary}
 \subsubsection{Avatar reconstruction}
