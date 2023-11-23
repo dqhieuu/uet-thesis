@@ -50,11 +50,11 @@ Other techniques have been developed for higher-quality 3D hair modeling \cite{w
 The latest research focused on hair modeling from images \cite{baoSurveyImageBasedTechniques2018}. This includes techniques for creating a 3D hair model from multiple images \cite{zhangDatadrivenApproachFourview2017}, as well as from a single image \cite{chaiDynamicHairManipulation2013,chaiSingleviewHairModeling2012,huSingleviewHairModeling2015}.
 
 
-\subsubsubsection{Hairnet}
+\subsubsubsection{HairNet}
 
-Hairnet \cite{zhouHairNetSingleViewHair2018} was the pioneering deep learning-based model for reconstructing 3D hair from a single image. Hairnet employed data augmentation techniques to create a large dataset comprising $40,000$ hairstyles. Its model architecture followed an encode-decode model, where the input was encoded into a feature vector and then decoded back into a 3D hair model. Hairnet's innovative use of synthetic data for training purposes has been adopted by subsequent models. Hairnet applied a 2D capture for each synthetic hairstyle and transformed it into an intermediate format called an oriented map. The oriented map provides directional information for the model.
+HairNet \cite{zhouHairNetSingleViewHair2018} was the pioneering deep learning-based model for reconstructing 3D hair from a single image. HairNet employed data augmentation techniques to create a large dataset comprising $40,000$ hairstyles. Its model architecture followed an encode-decode model, where the input was encoded into a feature vector and then decoded back into a 3D hair model. HairNet's innovative use of synthetic data for training purposes has been adopted by subsequent models. HairNet applied a 2D capture for each synthetic hairstyle and transformed it into an intermediate format called an oriented map. The oriented map provides directional information for the model.
 
-\includefigure[Hairnet orientation map detection and reconstruction output.]{images/hairnet.png}
+\includefigure[HairNet orientation map detection and reconstruction output.]{images/hairnet.png}
 
 \subsection{Emotion customization}
 
