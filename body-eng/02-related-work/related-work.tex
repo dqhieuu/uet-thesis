@@ -62,6 +62,6 @@ HairNet \cite{zhouHairNetSingleViewHair2018} was the pioneering deep learning-ba
 
 Using the FLAME model, the input parameters are categorized into 3 groups: shape parameters, expression parameters, and pose parameters. To change the facial expression, one would apply changes to FLAME expression parameters and pose parameters. However, these expression parameters are non-descriptive and are too many which can make the users confused. Therefore, more simple and descriptive parameters are needed for representing basic human emotions.
 
-Based on the common need for customizing facial emotion, a set of 6 basic emotions $S_e=\{ happiness, anger, sadness, fear, contempt, surprise\}$. These emotions are defined in the Arousal-Valence Model and are common for basic usage.
+Based on the common need for customizing facial emotion, a set of 6 basic emotions $S_e=\{ happiness, anger, sadness, fear, contempt, surprise\}$ is defined to customize the facial expression. These emotions are defined in the Arousal-Valence Model and are common for basic usage.
 
 The parameters responsible for dictating the facial expression in FLAME are expression parameters and pose parameters. To map these emotions to FLAME parameters, given that FLAME parameters mostly use linear morphing, one idea is to use a basic multi-layer perceptron architecture. The model implementing this should take the intensity of these emotions in the range of $[0,1]$ and return the corresponding FLAME parameters that are used for emotions.
