@@ -46,7 +46,7 @@ MICA uses a different approach to reconstruct the shape parameters compared to D
 
 \subsubsection{3D hair reconstruction}
 Representing hair structure in a three-dimensional environment is a complex task \cite{wardSurveyHairModeling2007}. Several studies, such as \cite{dengRetinaFaceSinglestageDense2019,papadopoulosFaceGCNGraphConvolutional2021,saitoPIFuPixelAlignedImplicit2019,zeng3DHumanMesh2020} represent hair as a mesh. While this representation serves specific purposes, it still poses various limitations such as refinement, animation, rendering, and so on.
-Other techniques have been developed for higher-quality 3D hair modeling \cite{wardSurveyHairModeling2007}. These include clustering hair into fiber groups and representing it as cylinders \cite{cluster} or modeling each hair strand individually \cite{wardSurveyHairModeling2007}. Modeling each hair strand fulfills requirements for practical applications.
+Other techniques have been developed for higher-quality 3D hair modeling \cite{wardSurveyHairModeling2007}. These include clustering hair into fiber groups and representing it as cylinders \cite{yangClusterHairModel2000} or modeling each hair strand individually \cite{wardSurveyHairModeling2007}. Modeling each hair strand fulfills requirements for practical applications.
 The latest research focused on hair modeling from images \cite{baoSurveyImageBasedTechniques2018}. This includes techniques for creating a 3D hair model from multiple images \cite{zhangDatadrivenApproachFourview2017}, as well as from a single image \cite{chaiDynamicHairManipulation2013,chaiSingleviewHairModeling2012,huSingleviewHairModeling2015}.
 
 
@@ -62,4 +62,4 @@ Using the FLAME model, the input parameters are grouped into shape parameters, e
 
 Based on the common need for customizing facial emotion, a set of 6 basic emotions $S_e=\{ happiness, anger, sadness, fear, contempt, surprise\}$. These emotions are defined in the Arousal-Valence Model and are common for basic usage.
 
-The parameters responsible for dictating the facial expression in FLAME are expression parameters and pose parameters. In order to map these emotions to FLAME parameters, given that FLAME parameters mostly use linear morphing, one idea is to use a basic multi-layer perceptron architecture. The model implementing this should take the intensity of these emotions in the range of $[0,1]$ and return the corresponding FLAME parameters that are used for emotions.
+The parameters responsible for dictating the facial expression in FLAME are expression parameters and pose parameters. To map these emotions to FLAME parameters, given that FLAME parameters mostly use linear morphing, one idea is to use a basic multi-layer perceptron architecture. The model implementing this should take the intensity of these emotions in the range of $[0,1]$ and return the corresponding FLAME parameters that are used for emotions.
