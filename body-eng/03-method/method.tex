@@ -267,7 +267,7 @@ Similar to Anh-Duc et al. \cite{Duc}, we added several layers to the VAE model o
 
 \subsubsection{Face and hair alignment}
 To make our system a fully automated avatar reconstruction system, the hair model and head model need to be automatically aligned with each other. To achieve this, we propose an automated procedure for aligning the hair model with the head model.
-First, we define the anchor point of the hair object and the head object (Fig \ref{images/head_hair_sampled.png}) as the highest point of the mesh and the center of the mesh, respectively, from the top view.
+First, we define the anchor point of the hair object and the head object (Fig \ref{fig:images/head_hair_sampled.png}) as the highest point of the mesh and the center of the mesh, respectively, from the top view.
 
 For the head mesh $M_{head}=\{p_1,\ p_2,...,\ p_N\}$, we sample 5\% of the points with the highest z-axis values to create the set $M_{head\_5\%}$. For the hair mesh $M_{hair}$, for every hair strand, we sample 5\% of the points that start from the strand root to create the set $M_{hair\_5\%}$. We find that 5\% is enough to sample the points that form the head top, which can be used to approximate the center of the head and the hair accurately.
 
@@ -288,7 +288,7 @@ We then calculate the hair anchor point $A_{hair}$ and the head anchor point $A_
     \end{pmatrix}
 \end{equation}
 
-With the hair anchor and the head anchor, the translation vector $T_{hair}$ (Fig \ref{hair_translation}) is calculated by taking the subtraction of the 2 anchor points and adding it by a constant calibration value $C$.
+With the hair anchor and the head anchor, the translation vector $T_{hair}$ (Fig \ref{fig:images/hair_translation.png}) is calculated by taking the subtraction of the 2 anchor points and adding it by a constant calibration value $C$.
 
 \begin{equation}
     T_{hair} = A_{hair} - A_{head} + C
