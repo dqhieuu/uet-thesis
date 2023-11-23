@@ -3,10 +3,7 @@
 
 \subsection{3D avatar reconstruction}
 
-\subsubsection{Overview}
-% - Need automated solution with high accuracy applicable for incomplete image input (single-view image)
-
-% - There are solutions ranging from manually to fully automated (end-to-end), using machine learning methods.
+\subsubsection{3D face reconstruction}
 
 Creating a 3D model of a human head can be done using various methods, ranging from manual to fully automated. Manual methods involve using 3D modeling software such as Blender, Autodesk Maya, or ZBrush to create a model from scratch, using techniques such as sculpting or modeling with geometric primitives. Less manual methods involve starting with a base head model and making changes to it.
 
@@ -14,13 +11,13 @@ The concept of 3D Morphable Models (3DMMs) was introduced by Blanz and Vetter \c
 
 To better express facial details, recent works have introduced non-linearity by integrating neural networks into 3DMMs such as \acrshort{vae} \cite{ranjanGenerating3DFaces2018}, \acrshort{gan} \cite{gecerFastGANFITGenerativeAdversarial2022}, or \acrshort{nerf} \cite{galanakis3DMMRFConvolutionalRadiance2023,hongHeadNeRFRealTimeNeRFBased2022}.
 
-\subsubsection{FLAME}
+\subsubsubsection{FLAME}
 
 As the high-end methods for generating 3D faces require extensive labor and the low-end methods lack facial expressiveness, FLAME \cite{liLearningModelFacial2017} aims to be a middle ground for 3D face modeling. FLAME is a 3DMM model that can reproduce realistic and expressive 3D face models that accurately capture the variations in facial shape and expression. FLAME separates the representation of identity, pose, and facial expression into different parameter spaces and combines them with linear blend skinning (\acrshort{lbs}) and blendshapes. Its ability to reproduce 3D face models with high expressiveness has made it the foundation for many state-of-the-art face reconstruction models.
 
 \includefigure[Different types of FLAME parameters for controlling the 3D shape]{images/flame_parameter_change.png}
 
-\subsubsection{DECA}
+\subsubsubsection{DECA}
 
 DECA \cite{fengLearningAnimatableDetailed2021} is a method to reconstruct 3D face models from a single-view image, using FLAME as a component in the process of reconstructing the 3D model. In addition to detecting the facial shape and expression, DECA can map the facial texture from the image to the 3D model using a 3D texture space.
 
@@ -39,7 +36,7 @@ The FLAME parameters are used to construct the FLAME 3D mesh, in which the shape
 
 The 3D face model is then rendered to form the 2D face image. The 2D face image is then compared with the input image to calculate the loss. The loss is then used to update the parameters. The parameters are then used to reconstruct the 3D face model. The process is repeated until the loss is minimized.
 
-\subsubsection{MICA}
+\subsubsubsection{MICA}
 
 MICA \cite{zielonkaMetricalReconstructionHuman2022} is a method to reconstruct 3D face models from a single-view image, which also uses FLAME as a component in the process of reconstructing the 3D model. However, unlike DECA, MICA only reconstructs the 3D face model with the shape parameters ($\beta$) and does not reconstruct the facial expression as well as the texture.
 
