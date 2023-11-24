@@ -36,7 +36,7 @@ The use cases of the system are shown in the figure below:
 \subsubsubsection{Create 3D avatar from a portrait image}
 This use case is the main use case of the system. The system should provide a GUI (graphical user interface) to allow the user to upload their images easily. The user uploads a single-view portrait image to the system, and the system will process the image and output a 3D avatar in the form of a 3D mesh reconstructed from the input image. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model and texture map. The sequence diagram of this use case is shown in the figure below.
 
-\begin{umlfigure}[Analysis: Sequence diagram: Create 3D avatar from a portrait image.][seq_create_3d_avatar]
+\begin{umlfigure}[Sequence diagram: Analysis - Create 3D avatar from a portrait image.][seq_create_3d_avatar]
     @startuml
     actor User
     participant "3D Avatar Reconstruction System" as System
@@ -53,7 +53,7 @@ This use case is the main use case of the system. The system should provide a GU
 
 This use case is an extension of the main use case. The user can choose to customize the 3D avatar's emotion by using sliders to adjust the intensity of a set of emotions. The system will then output a 3D avatar with the emotions applied. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model and texture map. The sequence diagram of this use case is shown in the figure below.
 
-\begin{umlfigure}[Analysis: Sequence diagram: Create 3D avatar with customized emotions.][seq_create_3d_avatar_emotion]
+\begin{umlfigure}[Sequence diagram: Analysis - Create 3D avatar with customized emotions.][seq_create_3d_avatar_emotion]
     @startuml
     actor User
     participant "3D Avatar Reconstruction System" as System
@@ -73,7 +73,7 @@ This use case is an extension of the main use case. The user can choose to custo
 
 This use case is an extension of the main use case. The user can choose to try on different hairstyles with the 3D avatar. The system will then output a 3D avatar with the selected hairstyle. The user can choose to download the 3D avatar as a zip file, which contains the 3D avatar model, the texture map, and the hairstyle model. The sequence diagram of this use case is shown in the figure below.
 
-\begin{umlfigure}[Analysis: Sequence diagram: Try on different hairstyles with 3D avatar.][seq_try_on_hairstyle]
+\begin{umlfigure}[Sequence diagram: Analysis - Try on different hairstyles with 3D avatar.][seq_try_on_hairstyle]
     @startuml
     actor User
     participant "3D Avatar Reconstruction System" as System
