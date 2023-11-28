@@ -95,10 +95,11 @@
 \renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
 \renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}}
 
-\titleformat{\subsubsubsection}
-{\bfseries\itshape}{\thesubsubsubsection \hspace{0.5em} #1}{1em}{}
-\titlespacing*{\subsubsubsection}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subsubsubsection}{\bfseries\itshape}{\thesubsubsubsection \hspace{0.5em} #1}{1em}{}
+\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% star subsubsubsection
+\titleformat{name=\subsubsubsection,numberless}{\bfseries\itshape}{#1}{1em}{}
 
 \makeatletter
 % \adddialect\l@VIETNAMESE\l@vietnamese
