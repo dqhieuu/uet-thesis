@@ -182,7 +182,7 @@ With the hair anchor and the head anchor, the translation vector $T_{hair}$ (Fig
     T_{hair} = A_{hair} - A_{head} + C
 \end{equation}
 
-For the scaling adjustment, first, I find the axis-aligned bounding boxes of the hair model and the head model. An assumption is made, which is the head model and the hair model are front-facing, as per the requirement of the captured image. Thus, the front-view lengths of the hair and the head can be deduced by taking the x-axis lengths. With the hair and the head length, the scaling coefficient can be calculated by taking the ratio of the hair length to the head length and can be adjusted with the addition constant $C$.
+For the scaling adjustment, first, the axis-aligned bounding boxes of the hair model and the head model are calculated. An assumption is made, which is the head model and the hair model are front-facing, as per the requirement of the captured image. Thus, the front-view lengths of the hair and the head can be deduced by taking the x-axis lengths. With the hair and the head length, the scaling coefficient can be calculated by taking the ratio of the hair length to the head length and can be adjusted with the addition constant $C$.
 
 \begin{equation}
     S_{hair} = \frac{W_{hair}}{W_{head}} + C
