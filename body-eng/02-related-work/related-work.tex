@@ -15,13 +15,13 @@ To better express facial details, recent works have introduced non-linearity by 
 
 As the high-end methods for generating 3D faces require extensive labor and the low-end methods lack facial expressiveness, FLAME \cite{liLearningModelFacial2017} aims to be a middle ground for 3D face modeling. FLAME is a 3DMM model that can reproduce realistic and expressive 3D face models that accurately capture the variations in facial shape and expression. FLAME separates the representation of identity, pose, and facial expression into different parameter spaces and combines them with linear blend skinning (\glsxtrshort{lbs}) and blendshapes. Its ability to reproduce 3D face models with high expressiveness has made it the foundation for many state-of-the-art face reconstruction models.
 
-\includefigure[Different types of FLAME parameters for controlling the 3D shape]{images/flame_parameter_change.png}
+\includefigure[Different types of FLAME parameters for controlling the 3D shape.]{images/flame_parameter_change.png}
 
 \subsubsubsection*{DECA}
 
 DECA \cite{fengLearningAnimatableDetailed2021} is a method to reconstruct 3D face models from a single-view image, using FLAME as a component in the process of reconstructing the 3D model. In addition to detecting the facial shape and expression, DECA can map the facial texture from the image to the 3D model using a 3D texture space.
 
-\includefigure[DECA architecture, using FLAME as part of the pipeline]{images/deca_architecture.png}[1.0]
+\includefigure[DECA architecture, using FLAME as part of the pipeline.]{images/deca_architecture.png}[1.0]
 
 Given an input image, DECA encoders output
 \begin{itemize}

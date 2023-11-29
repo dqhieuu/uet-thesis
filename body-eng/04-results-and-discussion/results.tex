@@ -93,7 +93,7 @@ Table \ref{loss_stats} illustrates the results of the aforementioned measurement
 \begin{table}[H]
     \centering
     \captionsetup{font=bf}
-    \caption{Comparison of our system and others}
+    \caption{Comparison of our system and others for avatar reconstruction}
     \begin{tabularx}{\linewidth}{| X | X | X | X | X |}
         \hline
                             & \textbf{PSNR} & \textbf{SSIM} & \textbf{LPIPS} & \textbf{DFID} \\ \hline\hline
@@ -107,7 +107,7 @@ Table \ref{loss_stats} illustrates the results of the aforementioned measurement
 \subsubsubsection{Qualitative results}
 Out of the 33 respondents, the survey showed that an impressive 93.8\% of the respondents were able to correctly identify that the input image and the synthesized face image belonged to the same  ($score >= 3$). Of those, 14\% were evaluated as being very similar with scores of 5, and 49.3\% were evaluated with scores of 4. %Likert scale provides a way for participants to express their opinions on a spectrum of agreement, allowing us to gather more nuanced feedback on the quality and realism of our avatar reconstruction system. 
 
-\includefigure[The survey result.]{images/head_similarity.png}[0.6]
+\includefigure[The avatar reconstruction survey result.]{images/head_similarity.png}[0.6]
 
 \subsubsection{Customizable facial emotions}
 
@@ -116,7 +116,7 @@ We used the FaceScape scanned mesh dataset as the ground truth for the evaluatio
 
 We compared the ground truth with 2 types of face reconstruction models: One uses the DECA model with the emotion set to neutral, one uses DECA with auto-detected emotion, and one uses the DECA model with our emotion model. The reason for using the DECA model with the emotion set to neutral is to compare the results reconstructed using only the shape parameters (\beta) with the results reconstructed using both the shape parameters (\beta) and the expression parameters (\psi). A good result would be that the results reconstructed using both the shape parameters (\beta) and the expression parameters (\psi) are better than the results reconstructed using only the shape parameters (\beta).
 
-The comparison was additionally made with two views using different input images: one from the front view and one from the side view. The benchmark is done on 20 subjects with 4 different expressions (neutral, smile, sadness, anger), and using 2 different views which results in 160 data points. The evaluated data can be downloaded at (\url{}). The results are shown in the table below.
+The comparison was additionally made with two views using different input images: one from the front view and one from the side view. The benchmark is done on 20 subjects with 4 different expressions (neutral, smile, sadness, anger), and using 2 different views which results in 160 data points. The evaluated data can be downloaded at (\url{https://tinyurl.com/now-eval-emotion}). The results are shown in the table below.
 
 \begin{table}[H]
     \centering
