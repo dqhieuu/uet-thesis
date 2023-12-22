@@ -106,7 +106,7 @@ The details of each reconstruction block will be explained in detail in the sect
 
 \subsubsection{Use case: Create 3D avatar from a portrait image}
 
-\subsubsubsection{Overview and the implemented flow}
+\subsubsubsection*{Overview and the implemented flow}
 
 For taking a single-view portrait image as input, the system provides a front-end interface, i.e. a web page, where the user can upload their image. The front-end interface allows the user to send the image to a gateway server, which is responsible for handling the user's requests and sending the image to the back-end server for processing. By using a gateway server, the system architecture can be modularized, which means multiple reconstruction backends can be used as substitutions. A gateway also allows the system to easily scale up to handle a large number of requests by adding more back-end servers.
 
@@ -149,11 +149,11 @@ The implemented flow for creating a 3D avatar from a single-view portrait image 
 
 \clearpage
 
-\subsubsubsection{Technical detail: Face reconstruction}\label{sec:method/face-reconstruction}
+\subsubsubsection*{Technical detail: Face reconstruction}\label{sec:method/face-reconstruction}
 
 To generate the 3D head, we used the combination of DECA \cite{fengLearningAnimatableDetailed2021} and MICA \cite{zielonkaMetricalReconstructionHuman2022}. DECA takes a single input image and estimates the parameters for the FLAME model, which are identity's shape ($\beta$), head pose ($\theta$), and expression ($\psi$), which then outputs a mesh of 5023 vertices. At the time of creating DECA, FLAME didn't have an albedo model for the reconstruction of skin texture, therefore DECA used Basel Face Model's albedo space for texture reconstruction. Since then, there have been works that make it possible to construct FLAME texture space \cite{fengPhotometricFLAMEFitting2023,smithMorphableFaceAlbedo2020}. While it is possible to use DECA for the identity's shape ($\beta$) parameters, we decided to use MICA for the fitting of the shape parameters as MICA can reconstruct these parameters with metrical accuracy and produces generally better results, as demonstrated in the NoW Challenge \cite{RingNet:CVPR:2019} benchmarks.
 
-\subsubsubsection{Technical detail: Face and hair alignment}
+\subsubsubsection*{Technical detail: Face and hair alignment}
 To make our system a fully automated avatar reconstruction system, the hair model and face model need to be automatically aligned with each other. To achieve this, we propose an automated procedure for aligning the hair model with the face model.
 First, we define the anchor point of the hair object and the head object (Fig \ref{fig:images/head_hair_sampled.png}) as the highest point of the mesh and the center of the mesh, respectively, from the top view.
 
@@ -203,7 +203,7 @@ By aligning the hair model with the already aligned head model, the problem of H
 
 \subsubsection{Use case: Create 3D avatar with customized emotions}
 
-\subsubsubsection{Overview and the implemented flow}
+\subsubsubsection*{Overview and the implemented flow}
 
 The system allows the user to customize the 3D avatar's emotion by using sliders to adjust the intensity of a set of emotions. The system uses a simple emotion-to-FLAME regressive model to convert the emotion parameters to FLAME's pose and expression parameters. The emotion-to-FLAME regressive model is trained on the VKIST dataset, with the ground truth acquired by running the dataset through the pre-trained face reconstruction model (DECA, MICA). The technical detail of the emotion-to-FLAME regressive model is explained in the section \ref{sec:method/contribution}.
 
@@ -247,7 +247,7 @@ The implemented flow for creating a 3D avatar with customized emotions is shown 
 
 \subsubsection{Use case: Try on different hairstyles with 3D avatar}
 
-\subsubsubsection{Overview and the implemented flow}
+\subsubsubsection*{Overview and the implemented flow}
 
 The system allows the user to try on different hairstyles with the 3D avatar. The system uses a pre-trained image-to-hair model to reconstruct the user's hairstyle from the input image. If the user chooses to try on different hairstyles, the system will not use the user's hairstyle from the input image. Instead, the system will use one of the hairstyles in the database. The user can choose to download the 3D avatar with the hairstyle as a zip file, which contains the 3D avatar model, the texture map, and the hairstyle model.
 
@@ -297,7 +297,7 @@ The implemented flow for trying on different hairstyles with the 3D avatar is sh
 
 \clearpage
 
-\subsubsubsection{Technical detail: Hair reconstruction and using hairstyles from the database}
+\subsubsubsection*{Technical detail: Hair reconstruction and using hairstyles from the database}
 
 For 3D hairstyle reconstruction from a captured image, we employed the pipeline introduced in HairNet, which consists of data collection and processing, data augmentation, training data generation, and deep learning model construction. We made slight modifications to the data augmentation step to achieve better results for our specific application. During the model construction step, we utilized the improved model by Anh-Duc et al. \cite{loThreeDimensionalHairStructure2023}, which is based on the model introduced in HairNet. We followed a similar approach to HairNet, used $343$ models from open sources, and aligned all the models with the same head, using individual strand representations. Each hairstyle consisted of $32\times32$ fixed hair strands on the scalp grid, with each hair strand being a discrete representation of $100$ points in three-dimensional space. We classified and mixed the hair dataset, resulting in a total of $2000$ hairstyles. Unlike HairNet, which used large rotation angles, we used narrower rotation angles ranging from $-30$ to $30$ degrees as our application primarily consists of front-facing images. For each hairstyle, we used three different shooting angles, which varied between distinct hairstyles.
 
