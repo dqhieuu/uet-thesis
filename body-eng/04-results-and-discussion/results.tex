@@ -87,7 +87,7 @@ It uses a set of 7 landmark points to rigidly align the predicted mesh with the 
 \subsection{Experimental Results and Commentary}
 \subsubsection{Avatar reconstruction}
 
-\subsubsubsection{Quantitative results}
+\subsubsubsection*{Quantitative results}
 Table \ref{loss_stats} illustrates the results of the aforementioned measurements when comparing our method with several other 3D face reconstruction methods. The results show that, in terms of comparison, our results are not as good as many other methods such as i3DMM and MoFaNeRF because they applied the measurements to hairless faces. However, we also see that all of the measurement results meet the requirements. In particular, the average value of \glsxtrshort{dfid} is 0.25, which indicates that the synthesized output image has been evaluated as retaining the represented features of the same person as the input image.
 
 \begin{table}[H]
@@ -104,14 +104,14 @@ Table \ref{loss_stats} illustrates the results of the aforementioned measurement
     \label{loss_stats}
 \end{table}
 
-\subsubsubsection{Qualitative results}
+\subsubsubsection*{Qualitative results}
 Out of the 33 respondents, the survey showed that an impressive 93.8\% of the respondents were able to correctly identify that the input image and the synthesized face image belonged to the same  ($score >= 3$). Of those, 14\% were evaluated as being very similar with scores of 5, and 49.3\% were evaluated with scores of 4. %Likert scale provides a way for participants to express their opinions on a spectrum of agreement, allowing us to gather more nuanced feedback on the quality and realism of our avatar reconstruction system. 
 
 \includefigure[The avatar reconstruction survey result.]{images/head_similarity.png}[0.6]
 
 \subsubsection{Customizable facial emotions}
 
-\subsubsubsection{Quantitative results}
+\subsubsubsection*{Quantitative results}
 We used the FaceScape scanned mesh dataset as the ground truth for the evaluation. The comparison was made between the ground truth --- the FaceScape mesh --- and the reconstructed mesh. The benchmarking method is the NoW challenge \cite{RingNet:CVPR:2019}, which is one of the most widely used methods for evaluating 3D face reconstruction methods.
 
 We compared the ground truth with 2 types of face reconstruction models: One uses the DECA model with the emotion set to neutral, one uses DECA with auto-detected emotion, and one uses the DECA model with our emotion model. The reason for using the DECA model with the emotion set to neutral is to compare the results reconstructed using only the shape parameters (\beta) with the results reconstructed using both the shape parameters (\beta) and the expression parameters (\psi). A good result would be that the results reconstructed using both the shape parameters (\beta) and the expression parameters (\psi) are better than the results reconstructed using only the shape parameters (\beta).
