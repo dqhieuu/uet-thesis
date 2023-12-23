@@ -7,7 +7,7 @@
 
 Creating a 3D model of a human head can be done using various methods, ranging from manual to fully automated. Manual methods involve using 3D modeling software such as Blender, Autodesk Maya, or ZBrush to create a model from scratch, using techniques such as sculpting or modeling with geometric primitives. Less manual methods involve starting with a base head model and making changes to it.
 
-The concept of 3D Morphable Models (3DMMs) was introduced by Blanz and Vetter \cite{blanzMorphableModelSynthesis1999}, which represented the shape and texture variations of faces using linear statistical models, specifically Principal Component Analysis (\glsxtrshort{pca}). This method allows for the formalization of the diversity of human faces using a small number of parameters. Various works \cite{paysan3DFaceModel2009,gerigMorphableFaceModels2018,caoFaceWarehouse3DFacial2014,liLearningModelFacial2017,yangFaceScapeLargeScaleHigh2020} have been dedicated to creating a generalized \glsxtrshort{3dmm}.
+The concept of 3D Morphable Models (3DMMs) was introduced by Blanz and Vetter \cite{blanzMorphableModelSynthesis1999}, which represents the shape and texture variations of faces using linear statistical models, specifically Principal Component Analysis (\glsxtrshort{pca}). This method allows for the formalization of the diversity of human faces using a small number of parameters. Various works \cite{paysan3DFaceModel2009,gerigMorphableFaceModels2018,caoFaceWarehouse3DFacial2014,liLearningModelFacial2017,yangFaceScapeLargeScaleHigh2020} have been dedicated to creating a generalized \glsxtrshort{3dmm}.
 
 To better express facial details, recent works have introduced non-linearity by integrating neural networks into 3DMMs such as \glsxtrshort{vae} \cite{ranjanGenerating3DFaces2018}, \glsxtrshort{gan} \cite{gecerFastGANFITGenerativeAdversarial2022}, or \glsxtrshort{nerf} \cite{galanakis3DMMRFConvolutionalRadiance2023,hongHeadNeRFRealTimeNeRFBased2022}.
 
@@ -34,7 +34,7 @@ Given an input image, DECA encoders output
 
 The FLAME parameters are used to construct the FLAME 3D mesh, in which the shape parameters define the invariant mesh identity, whereas the expression parameters and pose parameters define the variant mesh expression and pose. The detail parameters are used to reconstruct the high-frequency details of the face. The albedo parameters are used to reconstruct the face texture. The camera parameters are used to reconstruct the camera pose. The light parameters are used to reconstruct the lighting conditions.
 
-The 3D face model is then rendered to form the 2D face image. The 2D face image is then compared with the input image to calculate the loss. The loss is then used to update the parameters. The parameters are then used to reconstruct the 3D face model. The process is repeated until the loss is minimized.
+The 3D face model is then rendered in the form of a 2D face image. The 2D face image is then compared with the input image to calculate the loss. The loss is then used to update the parameters. The parameters are then used to reconstruct the 3D face model. The process is repeated until the loss is minimized.
 
 \subsubsubsection*{MICA}
 
