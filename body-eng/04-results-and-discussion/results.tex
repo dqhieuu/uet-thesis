@@ -6,7 +6,9 @@
 \subsubsection{For avatar reconstruction}
 
 \subsubsubsection*{The HairNet dataset}
-We used the public HairNet dataset \cite{zhouHairNetSingleViewHair2018} to train the hair reconstruction model. Using our generation method, we were able to create a dataset of roughly 30,000 images for training the hair reconstruction model from the database of 343 hair models.
+We used the public HairNet dataset \cite{zhouHairNetSingleViewHair2018} to train the hair reconstruction model. The dataset contains 343 hair models in total. Each model in the dataset is in the form of a 3D strand-based hair model. From these hair models, the combination of any two hair models was made to produce a larger set of 3D hair models.
+
+Using our capturing method combined with the interpolated hair dataset, we were able to create an image dataset of roughly 30,000 images for training the hair reconstruction model.
 
 \includefigure[Rendered interpolated hairstyles in the HairNet dataset]{images/hairnet_interpolation.jpg}[1.0]
 
